@@ -1,0 +1,8 @@
+*.ts linguist-detectable=true
+*.tsx linguist-detectable=true
+
+*.js linguist-vendored
+*.jsx linguist-vendored
+
+dist/* linguist-vendored
+build/* linguist-vendored

@@ -11,6 +11,11 @@
   justify-content: space-between;
   padding: 1rem 1rem;
   z-index: 100;
+
+  background-color: rgba(255, 255, 255, 0.001);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5x);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.01);
 }
 
 .navigation {
@@ -34,8 +39,9 @@
 .register {
   background-color: #ffffff;
   color: $font-color-dark;
-  border: 1px solid $link-color;
-  font-weight: 700;
+  border: 2px solid $font-color-light;
+  border-radius: 7px;
+  font-weight: 600;
 
   &:hover {
     background-color: color.adjust(#ffffff, $lightness: 5%);
@@ -46,14 +52,20 @@
   color: $font-color-light;
 
   &:hover {
-    text-shadow: 0 0 4px $link-color, 0 0 8px $link-color, 0 0 12px $link-color;
+    text-shadow:
+      0 0 4px $link-color,
+      0 0 8px $link-color,
+      0 0 12px $link-color;
     transform: scale(1.05);
     border: none;
   }
 }
 
 .active {
-  text-shadow: 0 0 4px $link-color, 0 0 8px $link-color, 0 0 12px $link-color;
+  text-shadow:
+    0 0 4px $link-color,
+    0 0 8px $link-color,
+    0 0 12px $link-color;
   transform: scale(1.05);
   border: none;
 }

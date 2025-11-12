@@ -8,11 +8,17 @@ type NavItem = {
   label: string;
 };
 
-const mainNav: NavItem[] = [{ to: '/', label: 'Home' }];
+const mainNav: NavItem[] = [
+  { to: '/', label: 'Главная' },
+  { to: '/stages', label: 'Этапы' },
+  { to: '/results', label: 'Результаты' },
+  { to: '/faq', label: 'FAQ' },
+  { to: '/support', label: 'Поддержка' },
+];
 
 const authNav: NavItem[] = [
-  { to: '/login', label: 'Log in' },
-  { to: '/register', label: 'Register' },
+  { to: '/login', label: 'Вход' },
+  { to: '/register', label: 'Регистрация' },
 ];
 
 const Header: React.FC = () => {
@@ -40,8 +46,8 @@ const Header: React.FC = () => {
           const isActive = location.pathname === item.to;
           const classNames = [
             styles.navItem,
-            item.label === 'Register' ? styles.register : '',
-            item.label === 'Log in' ? styles.login : '',
+            item.label === 'Регистрация' ? styles.register : '',
+            item.label === 'Вход' ? styles.login : '',
             isActive ? styles.active : '',
           ]
             .filter(Boolean)

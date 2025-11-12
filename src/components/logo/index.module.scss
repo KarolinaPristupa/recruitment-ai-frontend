@@ -7,11 +7,10 @@
   font-weight: 700;
   font-size: 1rem;
   color: $font-color-light;
-  width: 40px;
+  width: 60px;
   height: 40px;
-  border: 2px solid $link-color;
-  border-radius: 12px;
-  text-transform: uppercase;
+  border: 2px solid $font-color-light;
+  border-radius: 7px;
   letter-spacing: 1px;
   background-color: $bg-color-dark;
 }

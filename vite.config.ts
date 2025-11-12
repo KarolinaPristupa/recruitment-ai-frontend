@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react(), sassDts()],
-  base: '/movie-app/',
+  base: '/v-ai/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
