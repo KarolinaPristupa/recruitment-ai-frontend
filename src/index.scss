@@ -66,28 +66,3 @@ h1 {
   font-size: 3em;
 }
 
-button {
-  border-radius: $button-radius;
-  border: 1px solid $button-border;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 600;
-  font-family: inherit;
-  color: $font-color-light;
-  background-color: $button-bg;
-  cursor: pointer;
-  transition:
-    background-color $transition-base,
-    border-color $transition-base;
-
-  &:hover {
-    background-color: $button-bg-hover;
-    border-color: $link-color;
-  }
-
-  &:focus,
-  &:focus-visible {
-    outline: 3px solid $link-color;
-    outline-offset: 2px;
-  }
-}

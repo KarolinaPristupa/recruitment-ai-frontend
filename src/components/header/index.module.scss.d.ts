@@ -4,7 +4,6 @@ declare const classNames: {
   readonly navItem: "navItem";
   readonly register: "register";
   readonly login: "login";
-  readonly active: "active";
   readonly authButtons: "authButtons";
 };
 export = classNames;
