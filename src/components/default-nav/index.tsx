@@ -28,7 +28,7 @@ const DefaultNav: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // проверяем сразу при рендере
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
