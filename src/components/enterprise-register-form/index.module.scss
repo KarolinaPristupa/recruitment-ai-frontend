@@ -1,0 +1,82 @@
+@use 'sass:color';
+@use '@/index.scss' as *;
+
+.container{
+  align-items: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  min-width: 400px;
+
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: $font-color-light;
+  font-size: 1rem;
+  transition: all $transition-base;
+
+  &:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+
+.errorInput {
+  border-color: #ff6b6b !important;
+}
+
+.errorMsg {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  text-align: left;
+  margin-top: 0.25rem;
+}
+
+button {
+  padding: 0.8rem 0.9rem;
+  border-radius: 8px;
+  border: none;
+  background-color: $font-color-light;
+  color:  $button-bg;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: $button-bg-hover;
+    color: $font-color-light;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.loginText {
+  color: $font-color-light;
+  font-size: 0.9rem;
+
+  a {
+    color: $link-color;
+    font-weight: 600;
+    &:hover {
+      text-shadow: 0 0 4px $link-color, 0 0 8px $link-color;
+    }
+  }
+}
