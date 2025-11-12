@@ -1,0 +1,64 @@
+@use 'sass:color';
+@use '@/index.scss' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  z-index: 100;
+}
+
+.navigation {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.navItem {
+  font-weight: 600;
+  padding: 0.4em 1em;
+  text-decoration: none;
+  font-family: inherit;
+  color: $font-color-light;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  border: none;
+}
+
+.register {
+  background-color: #ffffff;
+  color: $font-color-dark;
+  border: 1px solid $link-color;
+  font-weight: 700;
+
+  &:hover {
+    background-color: color.adjust(#ffffff, $lightness: 5%);
+  }
+}
+
+.login {
+  color: $font-color-light;
+
+  &:hover {
+    text-shadow: 0 0 4px $link-color, 0 0 8px $link-color, 0 0 12px $link-color;
+    transform: scale(1.05);
+    border: none;
+  }
+}
+
+.active {
+  text-shadow: 0 0 4px $link-color, 0 0 8px $link-color, 0 0 12px $link-color;
+  transform: scale(1.05);
+  border: none;
+}
+
+.authButtons {
+  display: flex;
+  gap: 1rem;
+}
