@@ -5,6 +5,7 @@ import enterpriseRegisterSchema from './validation-schema';
 import styles from './index.module.scss';
 import { EnterpriseRegisterFormData } from '@/types/enterprise-register-form-data';
 import { Link } from 'react-router-dom';
+import { registerEnterprise } from '@/api/registerEnterprise';
 
 const EnterpriseRegisterForm: React.FC = () => {
   const {
@@ -21,17 +22,12 @@ const EnterpriseRegisterForm: React.FC = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<EnterpriseRegisterFormData> = async (data) => {
+  const onSubmit = async (data) => {
     try {
-      const res = await fetch('http://localhost:8080/api/auth/enterprise/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error('Ошибка регистрации');
+      await registerEnterprise(data);
       alert('Компания зарегистрирована!');
-    } catch (err) {
-      alert(err);
+    } catch (err: any) {
+      alert(err.message);
     }
   };
 
