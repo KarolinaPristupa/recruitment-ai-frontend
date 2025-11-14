@@ -12,6 +12,7 @@
 }
 
 .container {
+  //position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,6 +22,18 @@
   gap: 1rem;
   padding: 2rem;
   animation: slideIn 1s ease-out forwards;
+
+  .stepNumber {
+    margin-block: 0!important;
+    position: absolute;
+    top: 10rem;
+    left: 44rem;
+    font-size: 30rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    z-index: 0;
+  }
 
   @keyframes slideIn {
     from {
@@ -34,16 +47,6 @@
   }
 }
 
-.stepNumber {
-  position: absolute;
-  top: 12rem;
-  right: 0;
-  font-size: 30rem;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.05);
-  pointer-events: none;
-  z-index: 0;
-}
 
 .animatedText {
   font-size: 3rem;

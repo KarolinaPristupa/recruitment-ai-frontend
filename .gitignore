@@ -15,7 +15,7 @@ build/
 dist-ssr
 *.local
 src/components/**/*.scss.d.ts
-
+src/pages/**/*.scss.d.ts
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

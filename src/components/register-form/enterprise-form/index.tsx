@@ -2,12 +2,12 @@ import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import enterpriseRegisterSchema from './validation-schema';
-import styles from './index.module.scss';
+import styles from '../index.module.scss';
 import { EnterpriseRegisterFormData } from '@/types/enterprise-register-form-data';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { registerEnterprise } from '@/api/registerEnterprise';
 
-const EnterpriseRegisterForm: React.FC = () => {
+const EnterpriseRegisterForm: React.FC<{ onSuccess: (id: number) => void }> = ({ onSuccess }) => {
   const {
     register,
     handleSubmit,
@@ -24,8 +24,9 @@ const EnterpriseRegisterForm: React.FC = () => {
 
   const onSubmit = async (data) => {
     try {
-      await registerEnterprise(data);
+      const enterprise = await registerEnterprise(data);
       alert('Компания зарегистрирована!');
+      onSuccess(enterprise.id);
     } catch (err: any) {
       alert(err.message);
     }
