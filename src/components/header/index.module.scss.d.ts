@@ -1,10 +1,12 @@
 declare const classNames: {
   readonly page: "page";
   readonly header: "header";
-  readonly navigation: "navigation";
   readonly navItem: "navItem";
+  readonly navigationDesktop: "navigationDesktop";
+  readonly navigationMobile: "navigationMobile";
+  readonly authButtons: "authButtons";
+  readonly navigation: "navigation";
   readonly register: "register";
   readonly login: "login";
-  readonly authButtons: "authButtons";
 };
 export = classNames;

@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className={styles.footer}>
+    <footer id={'contacts'} className={styles.footer}>
       <div className={styles.nav}>
         {navItems.map((item) => (
           <button

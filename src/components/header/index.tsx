@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import styles from './index.module.scss';
+
 import Logo from '@components/logo';
 import DefaultNav from '@components/default-nav';
+import BurgerMenu from '@components/burger-menu';
+
+import styles from './index.module.scss';
 import type NavItem from '@/types/nav-item';
 
 const authNav: NavItem[] = [
@@ -12,14 +15,15 @@ const authNav: NavItem[] = [
 
 const Header: React.FC = () => {
   const location = useLocation();
-
   const isHomePage = location.pathname === '/';
 
   return (
     <header className={styles.header}>
       <Logo />
 
-      <nav className={styles.navigation}>{isHomePage ? <DefaultNav /> : null}</nav>
+      <nav className={styles.navigationDesktop}>{isHomePage ? <DefaultNav /> : null}</nav>
+
+      <div className={styles.navigationMobile}>{isHomePage ? <BurgerMenu /> : null}</div>
 
       <div className={styles.authButtons}>
         {authNav.map((item) => (
@@ -27,8 +31,8 @@ const Header: React.FC = () => {
             key={item.label}
             to={item.to}
             className={`${styles.navItem} ${
-              item.label === 'Регистрация' ? styles.register : ''
-            } ${item.label === 'Вход' ? styles.login : ''}`}
+              item.label === 'Регистрация' ? styles.register : styles.login
+            }`}
           >
             {item.label}
           </Link>

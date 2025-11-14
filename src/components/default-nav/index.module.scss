@@ -8,11 +8,24 @@
   color: $font-color-light;
   border-radius: 8px;
   transition: all 0.25s ease;
-
   background: none;
   border: none;
   cursor: pointer;
   outline: none;
+
+  user-select: none;
+
+  &:hover {
+    text-shadow:
+            0 0 4px $link-color,
+            0 0 8px $link-color,
+            0 0 12px $link-color;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1.03);
+  }
 
   &:focus {
     outline: none;
@@ -21,8 +34,8 @@
 
 .active {
   text-shadow:
-    0 0 4px $link-color,
-    0 0 8px $link-color,
-    0 0 12px $link-color;
+          0 0 4px $link-color,
+          0 0 8px $link-color,
+          0 0 12px $link-color;
   transform: scale(1.05);
 }

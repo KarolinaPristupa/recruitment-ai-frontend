@@ -8,7 +8,7 @@ const items: NavItem[] = [
   { to: 'stages', label: 'Этапы' },
   { to: 'results', label: 'Результаты' },
   { to: 'faq', label: 'FAQ' },
-  { to: 'support', label: 'Поддержка' },
+  { to: 'contacts', label: 'Контакты' },
 ];
 
 const DefaultNav: React.FC = () => {
@@ -16,15 +16,15 @@ const DefaultNav: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      items.forEach((item) => {
+      for (const item of items) {
         const section = document.getElementById(item.to);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom > 100) {
-            setActiveSection(item.to);
-          }
+        if (!section) continue;
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom > 100) {
+          setActiveSection(item.to);
+          break;
         }
-      });
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

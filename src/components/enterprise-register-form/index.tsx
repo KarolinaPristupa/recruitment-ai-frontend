@@ -82,7 +82,7 @@ const EnterpriseRegisterForm: React.FC = () => {
           )}
         </div>
 
-        <button type="submit" disabled={isSubmitting}>
+        <button type="submit" disabled={isSubmitting} className={styles.submit}>
           Зарегистрироваться
         </button>
       </form>

@@ -18,13 +18,6 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.001);
 }
 
-.navigation {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
 .navItem {
   font-size: 1rem;
   font-weight: 600;
@@ -33,15 +26,60 @@
   color: $font-color-light;
   border-radius: 8px;
   transition: all 0.25s ease;
-
   background: none;
   border: none;
   cursor: pointer;
   outline: none;
 
+  user-select: none;
+
+  &:hover {
+    text-shadow:
+            0 0 4px $link-color,
+            0 0 8px $link-color,
+            0 0 12px $link-color;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1.03);
+  }
+
   &:focus {
     outline: none;
   }
+}
+
+.navigationDesktop {
+  display: flex;
+}
+
+.navigationMobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navigationDesktop {
+    display: none;
+  }
+
+  .navigationMobile {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .authButtons {
+    gap: 0.6rem;
+  }
+}
+
+
+.navigation {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 .register {
