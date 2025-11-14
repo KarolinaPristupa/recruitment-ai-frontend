@@ -6,3 +6,6 @@
 
 dist/* linguist-vendored
 build/* linguist-vendored
+
+*.css linguist-generated=true
+*.d.ts linguist-generated=true
