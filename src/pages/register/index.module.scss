@@ -24,7 +24,7 @@
   animation: slideIn 1s ease-out forwards;
 
   .stepNumber {
-    margin-block: 0!important;
+    margin-block: 0 !important;
     position: absolute;
     top: 10rem;
     left: 44rem;
@@ -46,7 +46,6 @@
     }
   }
 }
-
 
 .animatedText {
   font-size: 3rem;
