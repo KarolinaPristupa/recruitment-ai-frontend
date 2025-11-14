@@ -35,9 +35,9 @@
 
   &:hover {
     text-shadow:
-            0 0 4px $link-color,
-            0 0 8px $link-color,
-            0 0 12px $link-color;
+      0 0 4px $link-color,
+      0 0 8px $link-color,
+      0 0 12px $link-color;
     transform: scale(1.05);
   }
 
@@ -73,7 +73,6 @@
     gap: 0.6rem;
   }
 }
-
 
 .navigation {
   display: flex;
