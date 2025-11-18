@@ -1,0 +1,17 @@
+@use '@/index.scss' as *;
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: $font-color-light;
+  width: 60px;
+  height: 40px;
+  border: 2px solid $font-color-light;
+  border-radius: 7px;
+  letter-spacing: 1px;
+  background-color: $bg-color-dark;
+  text-decoration: none;
+}

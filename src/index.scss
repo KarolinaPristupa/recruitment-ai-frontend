@@ -1,0 +1,96 @@
+@use 'sass:color';
+
+$font-family-base: 'Manrope', 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+$font-color-light: rgba(255, 255, 255, 0.95);
+$font-color-dark: #1b0033;
+
+$bg-color-dark: #1b0033;
+$bg-gradient: radial-gradient(circle at center, #1a0135 0%, #0a0015 100%);
+
+$link-color: #8b7bff;
+$link-hover: #a499ff;
+
+$button-bg: #2b005a;
+$button-bg-hover: #2c0860;
+$button-border: transparent;
+$button-radius: 10px;
+
+$transition-base: 0.25s ease;
+
+:root {
+  display: flex;
+  flex-direction: column;
+  font-family: $font-family-base;
+  font-weight: 600;
+  line-height: 1.5;
+  color-scheme: dark;
+  color: $font-color-light;
+  background: $bg-gradient;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page > main {
+  flex: 1;
+}
+
+body {
+  min-width: 400px;
+  background: $bg-gradient;
+  font-family: $font-family-base;
+  font-weight: 600;
+  line-height: 1.5;
+  color: $font-color-light;
+  margin-top: 4rem;
+}
+
+#root {
+  padding: 0 !important;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  font-weight: 600;
+  color: $link-color;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $link-hover;
+  }
+}
+
+body {
+  margin: 0;
+  display: flex;
+  //place-items: center;
+  //justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: $bg-gradient;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  margin: 0 0 0.5em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3em;
+}
