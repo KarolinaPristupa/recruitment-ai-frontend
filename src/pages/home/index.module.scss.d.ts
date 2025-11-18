@@ -1,23 +1,5 @@
 declare const classNames: {
   readonly page: "page";
   readonly home: "home";
-  readonly sectionTitle: "sectionTitle";
-  readonly faqSection: "faqSection";
-  readonly faqList: "faqList";
-  readonly faqItem: "faqItem";
-  readonly faqQuestion: "faqQuestion";
-  readonly open: "open";
-  readonly faqAnswer: "faqAnswer";
-  readonly show: "show";
-  readonly supportSection: "supportSection";
-  readonly supportText: "supportText";
-  readonly mainSection: "mainSection";
-  readonly heroImage: "heroImage";
-  readonly title: "title";
-  readonly stagesSection: "stagesSection";
-  readonly resultsSection: "resultsSection";
-  readonly subtitle: "subtitle";
-  readonly slogan: "slogan";
-  readonly stageCard: "stageCard";
 };
 export = classNames;
