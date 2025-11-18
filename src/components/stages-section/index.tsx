@@ -79,7 +79,6 @@ const StagesSection: React.FC = () => {
       </motion.h2>
 
       <div className={styles.wrapper}>
-        {/* Стрелка влево */}
         <button
           onClick={() => setPage((p) => Math.max(0, p - 1))}
           disabled={page === 0}
@@ -116,7 +115,7 @@ const StagesSection: React.FC = () => {
                   <ul className={styles.list}>
                     {stage.fields.map((field, i) => (
                       <li key={i}>
-                        <span className={styles.bullet}>▹</span>
+                        <span className={styles.bullet}>✦</span>
                         {field}
                       </li>
                     ))}

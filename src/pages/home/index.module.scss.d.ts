@@ -2,9 +2,6 @@ declare const classNames: {
   readonly page: "page";
   readonly home: "home";
   readonly sectionTitle: "sectionTitle";
-  readonly resultsSection: "resultsSection";
-  readonly resultsText: "resultsText";
-  readonly resultImage: "resultImage";
   readonly faqSection: "faqSection";
   readonly faqList: "faqList";
   readonly faqItem: "faqItem";
@@ -18,6 +15,7 @@ declare const classNames: {
   readonly heroImage: "heroImage";
   readonly title: "title";
   readonly stagesSection: "stagesSection";
+  readonly resultsSection: "resultsSection";
   readonly subtitle: "subtitle";
   readonly slogan: "slogan";
   readonly stageCard: "stageCard";

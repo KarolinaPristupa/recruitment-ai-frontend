@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import chartImage from '@/assets/ai-graph.png';
 import { faqItems } from '@/constants/faqItems';
 import MainSection from '@components/main-section';
 
 import styles from './index.module.scss';
 import StagesSection from '@components/stages-section';
+import ResultsSection from '@/components/results-section';
 
 const Home: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -17,15 +17,7 @@ const Home: React.FC = () => {
     <div className={styles.home}>
       <MainSection />
       <StagesSection />
-      <section id="results" className={styles.resultsSection}>
-        <h2 className={styles.sectionTitle}>Результаты внедрения</h2>
-        <p className={styles.resultsText}>
-          После внедрения Recruitment AI компании экономят до <strong>60% времени</strong> на отбор
-          кандидатов и получают <strong>на 40% больше релевантных откликов</strong>. Аналитика
-          помогает точно определить, какие каналы приносят лучших кандидатов.
-        </p>
-        <img src={chartImage} alt="AI analytics graph" className={styles.resultImage} />
-      </section>
+      <ResultsSection />
 
       <section id="faq" className={styles.faqSection}>
         <h2 className={styles.sectionTitle}>Часто задаваемые вопросы</h2>
