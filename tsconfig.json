@@ -19,7 +19,8 @@
       "@services/*": ["src/services/*"],
       "@types/*": ["src/types/*"],
       "@assets/*": ["src/assets/*"],
-      "@contexts/*": ["src/contexts/*"]
+      "@contexts/*": ["src/contexts/*"],
+      "@constants/*": ["src/constants/*"]
     }
   },
   "include": ["src", "vite.config.ts"],

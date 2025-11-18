@@ -1,0 +1,134 @@
+@use '@/index.scss' as *;
+
+.faqSection {
+  padding: 10rem 2rem;
+  background: $bg-gradient;
+  overflow: hidden;
+  position: relative;
+}
+
+.sectionTitle {
+  font-size: 3.6rem;
+  font-weight: 900;
+  text-align: center;
+  background: $font-color-light;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 7rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 5px;
+    background: linear-gradient(90deg, transparent, #a78bfa, transparent);
+    border-radius: 3px;
+    box-shadow: 0 0 25px #a78bfa;
+  }
+}
+
+.faqContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.faqCard {
+  background: rgba(30, 30, 46, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 0 30px rgba(167, 139, 250, 0.08);
+  overflow: hidden;
+  transition: all 0.4s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.5),
+      0 0 40px rgba(167, 139, 250, 0.25);
+  }
+}
+
+.faqQuestion {
+  width: 100%;
+  padding: 1.8rem 2rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  color: #eee;
+  font-size: 1.35rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #a78bfa;
+    text-shadow: 0 0 12px rgba(167, 139, 250, 0.6);
+  }
+
+  &::after {
+    content: '✦';
+    font-size: 1.4em;
+    color: #a78bfa;
+    transition: transform 0.4s ease;
+    text-shadow: 0 0 15px rgba(167, 139, 250, 0.6);
+  }
+
+  &.open::after {
+    transform: rotate(90deg);
+  }
+}
+
+.faqAnswerWrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.5s ease;
+}
+
+.faqAnswerWrapper.open {
+  max-height: 400px;
+}
+
+.faqAnswer {
+  padding: 0 2rem 2rem 2rem;
+  color: #ddd;
+  font-size: 1.1rem;
+  line-height: 1.8;
+
+  ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    margin-bottom: 0.8rem;
+    padding-left: 1.2rem;
+
+    &::before {
+      content: '✦';
+      position: absolute;
+      left: -0.5rem;
+      color: #a78bfa;
+      font-size: 0.8em;
+      top: 0.4rem;
+    }
+  }
+}
