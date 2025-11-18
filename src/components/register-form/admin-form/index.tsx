@@ -1,7 +1,9 @@
+'use client';
+
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-
+import { useNavigate } from 'react-router-dom';
 import { adminRegisterSchema } from './validation-schema';
 import { AdminRegisterFormData } from '@/types/admin-register-form-data';
 import { registerAdmin } from '@/api/registerAdmin';
@@ -9,6 +11,7 @@ import { registerAdmin } from '@/api/registerAdmin';
 import styles from '../index.module.scss';
 
 const AdminRegisterForm: React.FC<{ enterpriseId: number }> = ({ enterpriseId }) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -30,6 +33,9 @@ const AdminRegisterForm: React.FC<{ enterpriseId: number }> = ({ enterpriseId })
       ...data,
       enterpriseId,
     });
+    setTimeout(() => {
+      navigate('/login');
+    }, 800);
 
     alert('Администратор зарегистрирован!');
   };

@@ -4,57 +4,126 @@
 .background {
   position: relative;
   min-height: 100vh;
-  background-image: url('@/assets/ai-robot.png');
-  background-repeat: no-repeat;
-  background-position: left top;
-  background-size: contain;
-  background-color: rgba(10, 10, 30, 0.8);
+  background-color: rgba(10, 10, 30, 0.98);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('@/assets/ai-robot.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left top;
+    pointer-events: none;
+    z-index: 0;
+
+    @media (max-width: 1023px) {
+      background-position: center bottom;
+      background-size: 90% auto;
+      height: 60%;
+      top: auto;
+      bottom: 0;
+    }
+  }
 }
 
 .container {
-  //position: relative;
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  margin: 4rem;
-  gap: 1rem;
   padding: 2rem;
-  animation: slideIn 1s ease-out forwards;
+  z-index: 2;
+  margin-top: -10rem;
 
-  .stepNumber {
-    margin-block: 0 !important;
-    position: absolute;
-    top: 10rem;
-    left: 44rem;
-    font-size: 30rem;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.05);
-    pointer-events: none;
-    z-index: 0;
+  @media (min-width: 1024px) {
+    align-items: flex-end;
+    padding-right: 6rem;
+    padding-bottom: 8rem;
+    margin-top: 0;
   }
 
-  @keyframes slideIn {
-    from {
-      transform: translateX(1rem);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.stepNumber {
+  position: absolute;
+  font-weight: 900;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  line-height: 1;
+  margin: 0;
+  white-space: nowrap;
+  color: rgba(167, 139, 250, 0.05);
+  filter: blur(1.5px);
+
+  @media (max-width: 1023px) {
+    font-size: 26rem;
+
+    top: 52%; // было 58%
+    left: 52%;
+    transform: translate(-50%, -50%);
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 40rem;
+
+    right: -1rem;
+    bottom: -1rem;
+    top: auto;
+    left: auto;
+    transform: none;
   }
 }
 
+.title {
+
+}
 .animatedText {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 1000;
-  max-width: 500px;
-  margin: 1rem -3rem;
   color: $font-color-light;
-  animation: slideIn 1s ease-out forwards;
-  opacity: 0;
+  text-align: center;
+  z-index: 3;
+  background: $font-color-light;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 5px;
+    background: linear-gradient(90deg, transparent, #a78bfa, transparent);
+    border-radius: 3px;
+    box-shadow: 0 0 20px #a78bfa;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 3.6rem;
+    max-width: 600px;
+    color: $font-color-light;
+    text-align: center;
+    z-index: 3;
+    background: $font-color-light;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    margin-right: -5.5rem;
+    margin-top: 3rem;
+  }
 
   @keyframes slideIn {
     from {
@@ -65,5 +134,16 @@
       transform: translateX(0);
       opacity: 1;
     }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

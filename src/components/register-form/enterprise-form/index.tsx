@@ -1,10 +1,10 @@
 import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import enterpriseRegisterSchema from './validation-schema';
 import styles from '../index.module.scss';
 import { EnterpriseRegisterFormData } from '@/types/enterprise-register-form-data';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { registerEnterprise } from '@/api/registerEnterprise';
 
 const EnterpriseRegisterForm: React.FC<{ onSuccess: (id: number) => void }> = ({ onSuccess }) => {
