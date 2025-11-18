@@ -7,5 +7,12 @@
 dist/* linguist-vendored
 build/* linguist-vendored
 
-*.css linguist-generated=true
+*.scss linguist-detectable=true
 *.d.ts linguist-generated=true
+
+*.js linguist-generated=true
+*.js.map linguist-generated=true
+dist/* linguist-generated=true
+build/* linguist-generated=true
+out/* linguist-generated=true
+public/* linguist-generated=true

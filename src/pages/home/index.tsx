@@ -1,30 +1,10 @@
 import React, { useState } from 'react';
-import styles from './index.module.scss';
-import heroImage from '@/assets/ai-human.png';
 import chartImage from '@/assets/ai-graph.png';
+import { faqItems } from '@/constants/faqItems';
+import MainSection from '@components/main-section';
 
-const faqItems = [
-  {
-    question: 'Как работает AI-анализ кандидатов?',
-    answer:
-      'Нейросеть анализирует резюме, определяет ключевые навыки, опыт и сопоставляет их с требованиями вакансии. В результате вы получаете рейтинг кандидатов по степени соответствия.',
-  },
-  {
-    question: 'Можно ли интегрировать систему с нашим HRM?',
-    answer:
-      'Да, мы предоставляем REST API и готовые интеграции с популярными HRM-платформами. Подключение занимает не более одного дня.',
-  },
-  {
-    question: 'Подходит ли платформа для малого бизнеса?',
-    answer:
-      'Да, Recruitment AI адаптируется под масштаб компании. Для стартапов предусмотрен бесплатный тариф на 3 вакансии.',
-  },
-  {
-    question: 'Нужны ли технические знания для работы?',
-    answer:
-      'Нет. Интерфейс интуитивный, а система подскажет каждый шаг — от регистрации до анализа кандидатов.',
-  },
-];
+import styles from './index.module.scss';
+import StagesSection from '@components/stages-section';
 
 const Home: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -35,72 +15,8 @@ const Home: React.FC = () => {
 
   return (
     <div className={styles.home}>
-      {/* --- Главная --- */}
-      <section id="main" className={styles.mainSection}>
-        <div className={styles.mainContent}>
-          <h1 className={styles.title}>V.AI</h1>
-          <p className={styles.subtitle}>
-            Онлайн-платформа для автоматизации подбора персонала.
-            <br />
-            Публикуйте вакансии, собирайте отклики и получайте <strong>AI-анализ кандидатов</strong>
-            .
-          </p>
-          <p className={styles.slogan}>Меньше рутинной работы — больше качественных кандидатов.</p>
-        </div>
-        <img src={heroImage} alt="AI cooperation" className={styles.heroImage} />
-      </section>
-
-      <section id="stages" className={styles.stagesSection}>
-        <h2 className={styles.sectionTitle}>Этапы запуска</h2>
-        <div className={styles.stagesGrid}>
-          {[
-            {
-              num: '01',
-              text: 'Регистрация компании',
-              fields: ['Название предприятия', 'Адрес', 'Контактный email', 'Телефон'],
-              className: 'long',
-            },
-            {
-              num: '02',
-              text: 'Регистрация администратора',
-              fields: ['Имя', 'Фамилия', 'Email', 'Телефон', 'Пароль'],
-              className: 'short',
-            },
-            {
-              num: '03',
-              text: 'Добавление HR-специалистов',
-              fields: ['Имя', 'Фамилия', 'Email', 'Телефон', 'Пароль'],
-              className: 'short',
-            },
-            {
-              num: '04',
-              text: 'Создание вакансий',
-              fields: [
-                'Название вакансии',
-                'Описание',
-                'Требования',
-                'Минимальная зарплата',
-                'Максимальная зарплата',
-                'Статус вакансии',
-              ],
-              className: 'long',
-            },
-          ].map((stage) => (
-            <div key={stage.num} className={`${styles.stageCard} ${styles[stage.className]}`}>
-              <p>{stage.text}</p>
-              <ul>
-                {stage.fields.map((field, i) => (
-                  <li key={i} style={{ fontSize: '0.95rem', margin: '0.25rem 0' }}>
-                    {field}
-                  </li>
-                ))}
-              </ul>
-              <span className={styles.stageNum}>{stage.num}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
+      <MainSection />
+      <StagesSection />
       <section id="results" className={styles.resultsSection}>
         <h2 className={styles.sectionTitle}>Результаты внедрения</h2>
         <p className={styles.resultsText}>
