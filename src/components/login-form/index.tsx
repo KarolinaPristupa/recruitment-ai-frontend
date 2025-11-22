@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
-import styles from './LoginForm.module.scss';
+import styles from './index.module.scss';
 import loginSchema from './validation-schema';
 import { useToastStore } from '@/store/toast-store';
 import { LoginFormData } from '@/types/login-form-data';

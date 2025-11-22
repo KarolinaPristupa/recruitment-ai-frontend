@@ -61,7 +61,7 @@ const AdminRegisterForm: React.FC = () => {
       localStorage.setItem('token', token);
       reset();
 
-      setTimeout(() => navigate('/dashboard'), 1500);
+      setTimeout(() => navigate('/enterprise/account'), 1500);
     } catch (err: any) {
       error(err.message);
     }
