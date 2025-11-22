@@ -4,6 +4,7 @@ import { Toast } from '@/types/toast';
 
 interface ToastStore {
   toasts: Toast[];
+  addToast: (type: ToastType, message: string, duration?: number) => void;
   success: (message: string, duration?: number) => void;
   error: (message: string, duration?: number) => void;
   info: (message: string, duration?: number) => void;
@@ -11,10 +12,10 @@ interface ToastStore {
   remove: (id: string) => void;
 }
 
-export const useToastStore = create<ToastStore>((set) => ({
+export const useToastStore = create<ToastStore>((set, get) => ({
   toasts: [],
 
-  addToast: (type: ToastType, message: string, duration = 5000) => {
+  addToast: (type, message, duration = 5000) => {
     const id = crypto.randomUUID();
     set((state) => ({ toasts: [...state.toasts, { id, type, message, duration }] }));
 
@@ -25,10 +26,10 @@ export const useToastStore = create<ToastStore>((set) => ({
     }
   },
 
-  success: (msg, dur) => (set as any).getState().addToast('success', msg, dur),
-  error: (msg, dur) => (set as any).getState().addToast('error', msg, dur),
-  info: (msg, dur) => (set as any).getState().addToast('info', msg, dur),
-  warning: (msg, dur) => (set as any).getState().addToast('warning', msg, dur),
+  success: (msg, dur) => get().addToast('success', msg, dur),
+  error: (msg, dur) => get().addToast('error', msg, dur),
+  info: (msg, dur) => get().addToast('info', msg, dur),
+  warning: (msg, dur) => get().addToast('warning', msg, dur),
 
   remove: (id) => set((state) => ({ toasts: state.toasts.filter((t) => t.id !== id) })),
 }));

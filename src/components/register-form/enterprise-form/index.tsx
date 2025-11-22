@@ -5,9 +5,17 @@ import enterpriseRegisterSchema from './validation-schema';
 import styles from '../index.module.scss';
 import { EnterpriseRegisterFormData } from '@/types/enterprise-register-form-data';
 import { Link } from 'react-router-dom';
-import { registerEnterprise } from '@/api/registerEnterprise';
+import { useRegistrationStore } from '@/store/registration-store';
+import { useToastStore } from '@/store/toast-store';
 
-const EnterpriseRegisterForm: React.FC<{ onSuccess: (id: number) => void }> = ({ onSuccess }) => {
+interface Props {
+  onNext: () => void;
+}
+
+const EnterpriseRegisterForm: React.FC<Props> = ({ onNext }) => {
+  const { success } = useToastStore();
+  const setCompanyData = useRegistrationStore((s) => s.setCompanyData);
+
   const {
     register,
     handleSubmit,
@@ -20,13 +28,14 @@ const EnterpriseRegisterForm: React.FC<{ onSuccess: (id: number) => void }> = ({
       contactEmail: '',
       contactPhone: '',
     },
+    mode: 'onChange',
   });
 
   const onSubmit = async (data) => {
     try {
-      const enterprise = await registerEnterprise(data);
-      alert('Компания зарегистрирована!');
-      onSuccess(enterprise.id);
+      setCompanyData(data);
+      success('Данные компании сохранены');
+      onNext();
     } catch (err: any) {
       alert(err.message);
     }

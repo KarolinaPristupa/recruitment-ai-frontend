@@ -1,4 +1,4 @@
-import { ToastType } from '@/hooks/useToast';
+import { ToastType } from '@/types/toast-type';
 
 export interface Toast {
   id: string;

@@ -6,7 +6,6 @@ import styles from './index.module.scss';
 
 const Register: React.FC = () => {
   const [step, setStep] = useState<1 | 2>(1);
-  const [enterpriseId, setEnterpriseId] = useState<number | null>(null);
 
   return (
     <div className={styles.background}>
@@ -15,20 +14,14 @@ const Register: React.FC = () => {
           <>
             <h1 className={styles.animatedText}>Зарегистрируйте свою компанию</h1>
 
-            <EnterpriseRegisterForm
-              onSuccess={(id) => {
-                setEnterpriseId(id);
-                setStep(2);
-              }}
-            />
+            <EnterpriseRegisterForm onNext={() => setStep(2)} />
           </>
         )}
 
-        {step === 2 && enterpriseId && (
+        {step === 2 && (
           <>
             <h1 className={styles.animatedText}>Создайте администратора компании</h1>
-
-            <AdminRegisterForm enterpriseId={enterpriseId} />
+            <AdminRegisterForm />
           </>
         )}
         <p className={styles.stepNumber}> 0{step}</p>
