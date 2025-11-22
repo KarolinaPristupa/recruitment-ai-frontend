@@ -1,0 +1,90 @@
+@use 'sass:color';
+@use '@/index.scss' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 0.9rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: $font-color-light;
+  font-size: 1rem;
+  transition: all $transition-base;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.errorInput {
+  border-color: #ff6b6b !important;
+  background-color: rgba(255, 107, 107, 0.08);
+}
+
+.errorMsg {
+  color: #ff6b6b;
+  font-size: 0.82rem;
+  margin-top: 0.4rem;
+  text-align: left;
+}
+
+.submit {
+  margin-top: 0.5rem;
+  padding: 0.9rem;
+  border-radius: 10px;
+  border: none;
+  background-color: $font-color-light;
+  color: $button-bg;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover:not(:disabled) {
+    background-color: $button-bg-hover;
+    color: $font-color-light;
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.loginText {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  margin-top: 1.5rem;
+
+  a {
+    color: $link-color;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-shadow: 0 0 8px $link-color;
+    }
+  }
+}
