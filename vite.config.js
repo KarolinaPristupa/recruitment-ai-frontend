@@ -6,18 +6,18 @@ import sassDts from 'vite-plugin-sass-dts';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 export default defineConfig({
-    plugins: [react(), sassDts()],
-    base: '/v-ai/',
-    resolve: {
-        alias: {
-            '@': path.resolve(__dirname, './src'),
-            '@pages': path.resolve(__dirname, './src/pages'),
-            '@router': path.resolve(__dirname, './src/router'),
-            '@components': path.resolve(__dirname, './src/components'),
-            '@types': path.resolve(__dirname, './src/types'),
-            '@assets': path.resolve(__dirname, './src/assets'),
-            '@contexts': path.resolve(__dirname, './src/contexts'),
-            '@constants': path.resolve(__dirname, './src/constants'),
-        },
+  plugins: [react(), sassDts()],
+  base: '/v-ai/',
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@router': path.resolve(__dirname, './src/router'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@types': path.resolve(__dirname, './src/types'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@contexts': path.resolve(__dirname, './src/contexts'),
+      '@constants': path.resolve(__dirname, './src/constants'),
     },
+  },
 });

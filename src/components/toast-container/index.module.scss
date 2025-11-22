@@ -29,8 +29,8 @@
   padding: 1.2rem 1.5rem;
   border: 1px solid rgba(120, 120, 180, 0.2);
   box-shadow:
-          0 10px 30px rgba(0, 0, 0, 0.6),
-          0 0 20px rgba(167, 139, 250, 0.15);
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(167, 139, 250, 0.15);
   color: #fff;
   display: flex;
   align-items: center;
@@ -41,8 +41,8 @@
   &:hover {
     transform: translateY(-4px);
     box-shadow:
-            0 15px 40px rgba(0, 0, 0, 0.7),
-            0 0 30px rgba(167, 139, 250, 0.3);
+      0 15px 40px rgba(0, 0, 0, 0.7),
+      0 0 30px rgba(167, 139, 250, 0.3);
   }
 }
 
