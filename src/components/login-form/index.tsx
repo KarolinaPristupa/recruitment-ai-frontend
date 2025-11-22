@@ -1,40 +1,47 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import styles from './index.module.scss';
+import styles from './LoginForm.module.scss';
 import loginSchema from './validation-schema';
+import { useToastStore } from '@/store/toast-store';
 import { LoginFormData } from '@/types/login-form-data';
 
 interface LoginFormProps {
   isLoading: boolean;
-  onSubmit: (data: LoginFormData) => Promise<void>;
+  onSubmit: SubmitHandler<LoginFormData>;
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ isLoading, onSubmit }) => {
+  const { error: showError } = useToastStore();
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    setError,
+    formState: { errors, isValid },
+    reset,
   } = useForm<LoginFormData>({
     resolver: yupResolver(loginSchema) as any,
     mode: 'onChange',
+    defaultValues: {
+      email: '',
+      password: '',
+    },
   });
 
-  const handleFormSubmit = async (data: LoginFormData) => {
+  const onFormSubmit: SubmitHandler<LoginFormData> = async (data) => {
     try {
       await onSubmit(data);
+      reset();
     } catch (err: any) {
-      const message = err.response?.data?.message || 'Неверный email или пароль';
-      setError('email', { message });
-      setError('password', { message });
+      const message = err.message || err.response?.data?.message || 'Неверный email или пароль';
+
+      showError(message);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
+    <form onSubmit={handleSubmit(onFormSubmit)} className={styles.form}>
       <div className={styles.inputWrapper}>
         <input
           type="email"
@@ -57,7 +64,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isLoading, onSubmit }) => {
         {errors.password && <span className={styles.errorMsg}>{errors.password.message}</span>}
       </div>
 
-      <button type="submit" disabled={isLoading} className={styles.submit}>
+      <button type="submit" disabled={isLoading || !isValid} className={styles.submit}>
         {isLoading ? 'Входим...' : 'Войти'}
       </button>
 
