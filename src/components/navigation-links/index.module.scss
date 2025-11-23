@@ -1,0 +1,53 @@
+@use '@/index.scss' as *;
+
+.link {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.4em 1em;
+  color: $font-color-light;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  background: none;
+  text-decoration: none;
+  user-select: none;
+
+  &:hover {
+    text-shadow:
+            0 0 4px $link-color,
+            0 0 8px $link-color,
+            0 0 12px $link-color;
+    transform: scale(1.05);
+  }
+
+  &.active {
+    text-shadow:
+            0 0 4px $link-color,
+            0 0 8px $link-color,
+            0 0 12px $link-color;
+    transform: scale(1.05);
+  }
+}
+
+.mobileLink {
+  display: block;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  font-size: 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  background: none;
+  color: $font-color-light;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  &.active {
+    background: rgba(167, 139, 250, 0.1);
+    color: $link-color;
+  }
+}

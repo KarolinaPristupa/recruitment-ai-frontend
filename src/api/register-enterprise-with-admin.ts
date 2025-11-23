@@ -1,5 +1,6 @@
 import { AuthResponse } from '@/types/auth-response';
 import { RegistrationData } from '@/types/registration-data';
+import { authStorage } from '@/utils/auth-storage';
 
 export const registerEnterpriseWithAdmin = async (
   data: RegistrationData,
@@ -22,6 +23,10 @@ export const registerEnterpriseWithAdmin = async (
 
     throw new Error(text || 'Ошибка регистрации');
   }
+  const result: AuthResponse = await res.json();
 
-  return res.json();
+  authStorage.setToken(result.token);
+  authStorage.setUserRole(result.role || 'ENT_ADMIN');
+
+  return result;
 };

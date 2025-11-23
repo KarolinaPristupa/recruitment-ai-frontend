@@ -22,7 +22,8 @@
       "@types/*": ["src/types/*"],
       "@assets/*": ["src/assets/*"],
       "@contexts/*": ["src/contexts/*"],
-      "@constants/*": ["src/constants/*"]
+      "@constants/*": ["src/constants/*"],
+      "@utils/*": ["src/urils/*"]
     }
   },
   "include": ["src", "vite.config.ts"],

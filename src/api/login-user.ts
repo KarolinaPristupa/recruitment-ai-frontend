@@ -1,4 +1,5 @@
 import { AuthResponse } from '@/types/auth-response';
+import { authStorage } from '@/utils/auth-storage';
 
 export interface LoginCredentials {
   email: string;
@@ -33,5 +34,11 @@ export const loginUser = async (credentials: LoginCredentials): Promise<AuthResp
     throw new Error(text || 'Ошибка входа. Попробуйте позже');
   }
 
-  return await response.json();
+  const data: AuthResponse = await response.json();
+
+  authStorage.setToken(data.token);
+  authStorage.setUserEmail(data.username);
+  authStorage.setUserRole(data.role);
+
+  return data;
 };
