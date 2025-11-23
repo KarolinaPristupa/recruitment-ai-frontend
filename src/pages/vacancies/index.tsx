@@ -99,7 +99,11 @@ const Vacancies: React.FC = () => {
 
                 <div className={styles.footer}>
                   <span className={styles.date}>
-                    Опубликовано {formatDate(vacancy.publishedAt || vacancy.createdAt)}
+                    {vacancy.status === 'ACTIVE' ? (
+                      <>Опубликовано {formatDate(vacancy.publishedAt)}</>
+                    ) : (
+                      <>Черновик от {formatDate(vacancy.createdAt)}</>
+                    )}
                   </span>
 
                   <div className={styles.actions}>

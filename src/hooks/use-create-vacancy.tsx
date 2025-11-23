@@ -16,7 +16,7 @@ export const useCreateVacancy = () => {
         salaryMax: data.salaryMax ? Number(data.salaryMax) : null,
       });
 
-      navigate('/vacancies', { replace: true });
+      navigate('/hr/vacancies', { replace: true });
     } catch (err: any) {
       const message = err.response?.data?.message || err.message || 'Не удалось создать вакансию';
 
