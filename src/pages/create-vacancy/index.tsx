@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CreateVacancyForm } from '@components/vacancy-form/create-form';
+import { CreateVacancyForm } from '@components/vacancy-form/create-vacancy';
 import { useCreateVacancy } from '@/hooks/use-create-vacancy';
 import styles from './index.module.scss';
 

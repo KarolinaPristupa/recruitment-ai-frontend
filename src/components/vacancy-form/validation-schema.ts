@@ -38,8 +38,6 @@ export const createVacancySchema = yup.object({
     .mixed<'ACTIVE' | 'DRAFT'>()
     .oneOf(['ACTIVE', 'DRAFT'], 'Выберите статус')
     .required('Выберите статус'),
-
-  externalIds: yup.string().optional(),
 });
 
 export type CreateVacancyFormData = yup.InferType<typeof createVacancySchema>;

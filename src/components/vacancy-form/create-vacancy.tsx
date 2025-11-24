@@ -2,8 +2,8 @@ import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { motion } from 'framer-motion';
-import { createVacancySchema, CreateVacancyFormData } from './validation.schema';
-import styles from '../index.module.scss';
+import { createVacancySchema, CreateVacancyFormData } from './validation-schema';
+import styles from './index.module.scss';
 
 interface VacancyFormProps {
   defaultValues?: Partial<CreateVacancyFormData>;

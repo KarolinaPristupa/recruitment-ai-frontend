@@ -5,6 +5,7 @@ import Register from '@pages/register';
 import Vacancies from '@pages/vacancies';
 import CreateVacancy from '@pages/create-vacancy';
 import VacancyView from '@pages/vacancy-view';
+import VacancyEdit from '@pages/vacancy-edit';
 
 const AppRouter = () => {
   return (
@@ -15,6 +16,7 @@ const AppRouter = () => {
       <Route path="/hr/vacancies" element={<Vacancies />} />
       <Route path="/hr/vacancies/create" element={<CreateVacancy />} />
       <Route path="/hr/vacancies/:id" element={<VacancyView />} />
+      <Route path="/hr/vacancies/:id/edit" element={<VacancyEdit />} />
     </Routes>
   );
 };

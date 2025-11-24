@@ -1,4 +1,4 @@
-// src/components/results-section/index.tsx
+// src/components/results-section/create-vacancy.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './index.module.scss';

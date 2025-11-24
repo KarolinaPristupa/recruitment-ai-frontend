@@ -89,7 +89,7 @@ const Vacancies: React.FC = () => {
 
                 <div className={styles.salary}>
                   {vacancy.salaryMin && vacancy.salaryMax
-                    ? `${formatSalary(vacancy.salaryMin)} – ${formatSalary(vacancy.salaryMax)} ₽`
+                    ? `${formatSalary(vacancy.salaryMin)} – ${formatSalary(vacancy.salaryMax)}`
                     : vacancy.salaryMin
                       ? `от ${formatSalary(vacancy.salaryMin)} ₽`
                       : 'Зарплата по договорённости'}

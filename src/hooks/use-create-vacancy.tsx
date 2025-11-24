@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '@/api/instance';
-import { CreateVacancyFormData } from '@components/vacancy-form/create-form/validation.schema'; // или откуда у тебя
+import { CreateVacancyFormData } from '@components/vacancy-form/validation-schema'; // или откуда у тебя
 
 export const useCreateVacancy = () => {
   const navigate = useNavigate();
