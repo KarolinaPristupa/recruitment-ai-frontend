@@ -136,3 +136,22 @@
     background: rgba(239, 68, 68, 0.4);
   }
 }
+
+.btnPublish {
+  background: rgba(250, 204, 21, 0.15);
+  color: #facc15;
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  border-radius: 12px;
+  padding: 0.4rem;
+  transition: 0.3s;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background: rgba(250, 204, 21, 0.25);
+    border-color: rgba(250, 204, 21, 0.7);
+  }
+}

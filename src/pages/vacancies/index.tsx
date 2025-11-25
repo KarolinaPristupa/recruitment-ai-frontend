@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useVacancies } from '@/hooks/use-vacancy';
+import { usePublishVacancy } from '@/hooks/use-publish-vacancy';
 import styles from './index.module.scss';
 import VacanciesGrid from '@components/vacancies-grid';
 
 const Vacancies: React.FC = () => {
   const { vacancies, loading, error, refetch, deleteVacancy } = useVacancies();
+  const { publish, loadingId } = usePublishVacancy();
+
   const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const handleDelete = async (id: number) => {
@@ -14,6 +17,7 @@ const Vacancies: React.FC = () => {
     setDeletingId(id);
     await deleteVacancy(id);
     setDeletingId(null);
+    await refetch();
   };
 
   useEffect(() => {
@@ -32,7 +36,9 @@ const Vacancies: React.FC = () => {
     );
   }
 
-  if (error) return <p className={styles.error}>Ошибка загрузки вакансий</p>;
+  if (error) {
+    return <p className={styles.error}>Ошибка загрузки вакансий</p>;
+  }
 
   return (
     <section className={styles.vacanciesSection}>
@@ -65,7 +71,13 @@ const Vacancies: React.FC = () => {
           </Link>
         </div>
       ) : (
-        <VacanciesGrid vacancies={vacancies} deletingId={deletingId} onDelete={handleDelete} />
+        <VacanciesGrid
+          vacancies={vacancies}
+          deletingId={deletingId}
+          publishingId={loadingId}
+          onDelete={handleDelete}
+          onPublish={publish}
+        />
       )}
     </section>
   );

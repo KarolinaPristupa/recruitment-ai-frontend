@@ -7,10 +7,18 @@ import styles from './index.module.scss';
 interface Props {
   vacancies: Vacancy[];
   deletingId: number | null;
+  publishingId: number | null;
   onDelete: (id: number) => void;
+  onPublish: (id: number) => void;
 }
 
-const VacanciesGrid: React.FC<Props> = ({ vacancies, deletingId, onDelete }) => {
+const VacanciesGrid: React.FC<Props> = ({
+  vacancies,
+  deletingId,
+  publishingId,
+  onDelete,
+  onPublish,
+}) => {
   return (
     <div className={styles.grid}>
       <AnimatePresence mode="popLayout">
@@ -23,7 +31,13 @@ const VacanciesGrid: React.FC<Props> = ({ vacancies, deletingId, onDelete }) => 
             exit={{ opacity: 0, scale: 0.9, y: -30 }}
             transition={{ duration: 0.4 }}
           >
-            <VacancyCard vacancy={v} deleting={deletingId === v.id} onDelete={onDelete} />
+            <VacancyCard
+              vacancy={v}
+              deleting={deletingId === v.id}
+              publishing={publishingId === v.id}
+              onDelete={onDelete}
+              onPublish={onPublish}
+            />
           </motion.div>
         ))}
       </AnimatePresence>

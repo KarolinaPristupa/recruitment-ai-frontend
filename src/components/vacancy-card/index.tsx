@@ -8,10 +8,12 @@ import styles from './index.module.scss';
 interface Props {
   vacancy: Vacancy;
   deleting: boolean;
+  publishing?: boolean;
   onDelete: (id: number) => void;
+  onPublish?: (id: number) => void;
 }
 
-const VacancyCard: React.FC<Props> = ({ vacancy, deleting, onDelete }) => {
+const VacancyCard: React.FC<Props> = ({ vacancy, deleting, publishing, onDelete, onPublish }) => {
   return (
     <article className={styles.card}>
       <div className={styles.cardHeader}>
@@ -95,6 +97,34 @@ const VacancyCard: React.FC<Props> = ({ vacancy, deleting, onDelete }) => {
               </svg>
             )}
           </motion.button>
+
+          {onPublish && (
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className={styles.btnPublish}
+              onClick={() => onPublish(vacancy.id)}
+              disabled={publishing}
+            >
+              {publishing ? (
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                />
+              ) : (
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M3 11l17-8-7 18-2-7-8-3z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeLinejoin="round"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              )}
+            </motion.button>
+          )}
         </div>
       </div>
     </article>
