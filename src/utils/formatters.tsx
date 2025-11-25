@@ -1,13 +1,19 @@
 import React from 'react';
 import styles from '@components/vacancy-details/index.module.scss';
+import { currencySymbols } from '@constants/currencySymbols';
 
-export const formatSalary = (value: string | null | undefined): string => {
+export const formatSalary = (
+  value: string | number | null | undefined,
+  currency?: string,
+): string => {
   if (!value) return 'по договорённости';
 
-  const num = parseFloat(value);
+  const num = Number(value);
   if (isNaN(num)) return 'по договорённости';
 
-  return new Intl.NumberFormat('ru-RU').format(num) + ' ₽';
+  const symbol = currency ? currencySymbols[currency] || currency : '';
+
+  return `${new Intl.NumberFormat('ru-RU').format(num)} ${symbol}`.trim();
 };
 
 export const formatListText = (text: string | null | undefined): React.ReactNode => {

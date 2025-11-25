@@ -81,6 +81,27 @@ export const EditVacancyForm: React.FC<EditVacancyFormProps> = ({
       </div>
 
       <div className={styles.field}>
+        <label>Валюта</label>
+        <div className={styles.selectWrapper}>
+          <select {...register('currency')} className={styles.select} defaultValue="">
+            <option value="" disabled hidden>
+              Выберите валюту
+            </option>
+            <option value="RUB">₽ (RUB) — Россия</option>
+            <option value="BYN">Br (BYN) — Беларусь</option>
+            <option value="KZT">₸ (KZT) — Казахстан</option>
+            <option value="UZS">сўм (UZS) — Узбекистан</option>
+            <option value="AZN">₼ (AZN) — Азербайджан</option>
+            <option value="EUR">€ (EUR) — Европа</option>
+            <option value="USD">$ (USD) — США</option>
+            <option value="GEL">₾ (GEL) — Грузия</option>
+            <option value="KGS">с (KGS) — Кыргызстан</option>
+          </select>
+        </div>
+        {errors.currency && <span className={styles.error}>{errors.currency.message}</span>}
+      </div>
+
+      <div className={styles.field}>
         <label>Статус публикации</label>
         <div className={styles.radioGroup}>
           <label className={styles.radio}>

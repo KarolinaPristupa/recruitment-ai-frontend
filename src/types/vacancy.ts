@@ -6,6 +6,7 @@ export interface Vacancy {
   requirements: string;
   salaryMin: string;
   salaryMax: string;
+  currency: string;
   status: string;
   publishedAt: string;
   externalIds: string;

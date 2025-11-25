@@ -24,11 +24,14 @@ const VacancyCard: React.FC<Props> = ({ vacancy, deleting, publishing, onDelete,
       </div>
 
       <div className={styles.salary}>
-        {vacancy.salaryMin && vacancy.salaryMax
-          ? `${formatSalary(vacancy.salaryMin)} – ${formatSalary(vacancy.salaryMax)}`
-          : vacancy.salaryMin
-            ? `от ${formatSalary(vacancy.salaryMin)}`
-            : 'Зарплата по договорённости'}
+        {vacancy.salaryMin || vacancy.salaryMax ? (
+          <>
+            {vacancy.salaryMin && formatSalary(vacancy.salaryMin, vacancy.currency)}
+            {vacancy.salaryMax && ` – ${formatSalary(vacancy.salaryMax, vacancy.currency)}`}
+          </>
+        ) : (
+          'Зарплата по договорённости'
+        )}
       </div>
 
       <p className={styles.description}>{vacancy.description?.slice(0, 120)}...</p>

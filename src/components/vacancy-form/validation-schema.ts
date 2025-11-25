@@ -38,6 +38,14 @@ export const createVacancySchema = yup.object({
     .mixed<'ACTIVE' | 'DRAFT'>()
     .oneOf(['ACTIVE', 'DRAFT'], 'Выберите статус')
     .required('Выберите статус'),
+
+  currency: yup
+    .string()
+    .oneOf(
+      ['RUR', 'BYN', 'BYR', 'KZT', 'UZS', 'AZN', 'EUR', 'USD', 'GEL', 'KGS'],
+      'Выберите валюту',
+    )
+    .required('Выберите валюту'),
 });
 
 export type CreateVacancyFormData = yup.InferType<typeof createVacancySchema>;

@@ -22,8 +22,8 @@ export const VacancyDetails: React.FC<VacancyDetailsProps> = ({ vacancy }) => {
       <div className={styles.salary}>
         {vacancy.salaryMin || vacancy.salaryMax ? (
           <>
-            {vacancy.salaryMin && formatSalary(vacancy.salaryMin)}
-            {vacancy.salaryMax && ` – ${formatSalary(vacancy.salaryMax)} ₽`}
+            {vacancy.salaryMin && formatSalary(vacancy.salaryMin, vacancy.currency)}
+            {vacancy.salaryMax && ` – ${formatSalary(vacancy.salaryMax, vacancy.currency)}`}
           </>
         ) : (
           'Зарплата по договорённости'
