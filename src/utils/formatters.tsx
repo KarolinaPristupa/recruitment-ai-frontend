@@ -42,6 +42,21 @@ export const formatListText = (text: string | null | undefined): React.ReactNode
     });
 };
 
+export const formatSkills = (text: string | null | undefined): React.ReactNode => {
+  if (!text) return null;
+
+  const items = text
+    .split(/[\n-]+/)
+    .map((t) => t.trim())
+    .filter(Boolean);
+
+  return items.map((item, index) => (
+    <div key={index} className={styles.listItem}>
+      {item}
+    </div>
+  ));
+};
+
 export const formatDate = (date: string | null) => {
   if (!date) return '—';
   return new Date(date).toLocaleDateString('ru-RU', {

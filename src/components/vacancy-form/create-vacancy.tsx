@@ -89,6 +89,82 @@ export const CreateVacancyForm: React.FC<VacancyFormProps> = ({
       </div>
 
       <div className={styles.field}>
+        <label>Навыки (через "-")</label>
+        <input {...register('skills')} placeholder="React-JavaScript-TypeScript" />
+        {errors.skills && <span className={styles.error}>{errors.skills.message}</span>}
+      </div>
+
+      <div className={styles.row}>
+        <div className={styles.field}>
+          <label>Формат работы</label>
+          <select {...register('workFormat')} className={styles.select} defaultValue="">
+            <option value="" disabled hidden>
+              Выберите формат
+            </option>
+            <option value="OFFICE">Офис</option>
+            <option value="REMOTE">Удалённая</option>
+            <option value="HYBRID">Гибрид</option>
+          </select>
+          {errors.workFormat && <span className={styles.error}>{errors.workFormat.message}</span>}
+        </div>
+
+        <div className={styles.field}>
+          <label>Тип занятости</label>
+          <select {...register('employmentType')} className={styles.select} defaultValue="">
+            <option value="" disabled hidden>
+              Выберите тип занятости
+            </option>
+            <option value="FULL_TIME">Полная занятость</option>
+            <option value="PART_TIME">Частичная занятость</option>
+            <option value="PROJECT">Проектная работа</option>
+            <option value="VOLUNTEER">Волонтёрство</option>
+            <option value="TRAINING">Стажировка</option>
+          </select>
+          {errors.employmentType && (
+            <span className={styles.error}>{errors.employmentType.message}</span>
+          )}
+        </div>
+      </div>
+
+      <div className={styles.row}>
+        <div className={styles.field}>
+          <label>Опыт работы</label>
+          <select {...register('experience')} className={styles.select} defaultValue="">
+            <option value="" disabled hidden>
+              Выберите опыт
+            </option>
+            <option value="NO_EXPERIENCE">Нет опыта</option>
+            <option value="1_3_YEARS">1-3 года</option>
+            <option value="3_6_YEARS">3-6 лет</option>
+            <option value="6_PLUS_YEARS">Более 6 лет</option>
+          </select>
+          {errors.experience && <span className={styles.error}>{errors.experience.message}</span>}
+        </div>
+
+        <div className={styles.field}>
+          <label>График работы</label>
+          <select {...register('schedule')} className={styles.select} defaultValue="">
+            <option value="" disabled hidden>
+              Выберите график
+            </option>
+            <option value="FULL_TIME">Полный день</option>
+            <option value="SHIFT">Сменный график</option>
+            <option value="FLEXIBLE">Гибкий график</option>
+            <option value="PART_TIME">Частичная занятость</option>
+            <option value="5/2">5/2</option>
+            <option value="2/2">2/2</option>
+          </select>
+          {errors.schedule && <span className={styles.error}>{errors.schedule.message}</span>}
+        </div>
+      </div>
+
+      <div className={styles.field}>
+        <label>Категория вакансии</label>
+        <input {...register('category')} placeholder="например, IT, Продажи" />
+        {errors.category && <span className={styles.error}>{errors.category.message}</span>}
+      </div>
+
+      <div className={styles.field}>
         <label>Статус публикации</label>
         <div className={styles.radioGroup}>
           <label className={styles.radio}>

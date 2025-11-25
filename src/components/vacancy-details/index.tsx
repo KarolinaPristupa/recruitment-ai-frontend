@@ -1,7 +1,11 @@
 import React from 'react';
-import { formatSalary, formatDate, formatListText } from '@/utils/formatters';
+import { formatSalary, formatDate, formatListText, formatSkills } from '@/utils/formatters';
 import { Vacancy } from '@/types/vacancy';
 import styles from './index.module.scss';
+import { EMPLOYMENT_TYPE_LABELS } from '@constants/employmet-type-labels';
+import { WORK_FORMAT_LABELS } from '@constants/work-format-labels';
+import { EXPERIENCE_LABELS } from '@constants/experiance-labels';
+import { SCHEDULE_LABELS } from '@constants/schedule-labels';
 
 interface VacancyDetailsProps {
   vacancy: Vacancy;
@@ -50,6 +54,56 @@ export const VacancyDetails: React.FC<VacancyDetailsProps> = ({ vacancy }) => {
         <h2>Требования</h2>
         <div className={styles.requirements}>{formatListText(vacancy.requirements)}</div>
       </section>
+
+      {vacancy.skills && (
+        <section className={styles.section}>
+          <h2>Навыки</h2>
+          <div className={styles.skills}>{formatSkills(vacancy.skills.split('-').join('\n'))}</div>
+        </section>
+      )}
+
+      <section className={styles.section}>
+        <h2>Занятость</h2>
+        <div className={styles.detailsRow}>
+          <div className={styles.detailItem}>
+            <span className={styles.label}>Тип занятости:</span>
+            <span className={styles.value}>
+              {EMPLOYMENT_TYPE_LABELS[vacancy.employmentType] ?? vacancy.employmentType}
+            </span>
+          </div>
+          <div className={styles.detailItem}>
+            <span className={styles.label}>Формат работы:</span>
+            <span className={styles.value}>
+              {WORK_FORMAT_LABELS[vacancy.workFormat] ?? vacancy.workFormat}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <h2>Опыт и график</h2>
+        <div className={styles.detailsRow}>
+          <div className={styles.detailItem}>
+            <span className={styles.label}>Опыт:</span>
+            <span className={styles.value}>
+              {EXPERIENCE_LABELS[vacancy.experience] ?? vacancy.experience}
+            </span>
+          </div>
+          <div className={styles.detailItem}>
+            <span className={styles.label}>График:</span>
+            <span className={styles.value}>
+              {SCHEDULE_LABELS[vacancy.schedule] ?? vacancy.schedule}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {vacancy.category && (
+        <section className={styles.section}>
+          <h2>Категория</h2>
+          <div>{vacancy.category}</div>
+        </section>
+      )}
     </div>
   );
 };

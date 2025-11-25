@@ -42,10 +42,23 @@ export const createVacancySchema = yup.object({
   currency: yup
     .string()
     .oneOf(
-      ['RUR', 'BYN', 'BYR', 'KZT', 'UZS', 'AZN', 'EUR', 'USD', 'GEL', 'KGS'],
+      ['RUB', 'BYN', 'BYR', 'KZT', 'UZS', 'AZN', 'EUR', 'USD', 'GEL', 'KGS'],
       'Выберите валюту',
     )
     .required('Выберите валюту'),
+
+  skills: yup.string().optional(),
+  workFormat: yup.string().oneOf(['OFFICE', 'REMOTE', 'HYBRID']).required('Выберите формат работы'),
+  employmentType: yup
+    .string()
+    .oneOf(['FULL_TIME', 'PART_TIME', 'PROJECT', 'VOLUNTEER', 'TRAINING'])
+    .required('Выберите тип занятости'),
+  experience: yup
+    .string()
+    .oneOf(['NO_EXPERIENCE', '1_3_YEARS', '3_6_YEARS', '6_PLUS_YEARS'])
+    .required('Выберите опыт'),
+  schedule: yup.string().optional(),
+  category: yup.string().optional(),
 });
 
 export type CreateVacancyFormData = yup.InferType<typeof createVacancySchema>;
