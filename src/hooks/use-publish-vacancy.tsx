@@ -3,10 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { publishVacancy } from '@/api/instance/vacancy-api';
 import { checkHhToken } from '@/api/instance/check-hh-token';
 import api from '@/api/instance';
+import { useToastStore } from '@/store/toast-store';
 
 export const usePublishVacancy = () => {
   const navigate = useNavigate();
   const [loadingId, setLoadingId] = useState<number | null>(null);
+
+  const addToast = useToastStore((s) => s.addToast);
 
   const publish = async (id: number) => {
     setLoadingId(id);
@@ -19,12 +22,18 @@ export const usePublishVacancy = () => {
       }
 
       const response = await publishVacancy(id);
+
+      addToast('success', 'Вакансия успешно опубликована на HH!');
+
       navigate('/hr/vacancies', { replace: true });
+
       return response;
     } catch (err: any) {
       const message =
         err.response?.data?.message || err.message || 'Не удалось опубликовать вакансию';
-      alert(message);
+
+      addToast('error', message);
+
       throw err;
     } finally {
       setLoadingId(null);

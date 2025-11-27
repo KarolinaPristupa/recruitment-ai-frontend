@@ -70,19 +70,13 @@ export const CreateVacancyForm: React.FC<VacancyFormProps> = ({
       <div className={styles.field}>
         <label>Валюта</label>
         <div className={styles.selectWrapper}>
-          <select {...register('currency')} className={styles.select} defaultValue="">
+          <select {...register('currency')} className={styles.select}>
             <option value="" disabled hidden>
               Выберите валюту
             </option>
             <option value="RUB">₽ (RUB) — Россия</option>
-            <option value="BYN">Br (BYN) — Беларусь</option>
-            <option value="KZT">₸ (KZT) — Казахстан</option>
-            <option value="UZS">сўм (UZS) — Узбекистан</option>
-            <option value="AZN">₼ (AZN) — Азербайджан</option>
             <option value="EUR">€ (EUR) — Европа</option>
             <option value="USD">$ (USD) — США</option>
-            <option value="GEL">₾ (GEL) — Грузия</option>
-            <option value="KGS">с (KGS) — Кыргызстан</option>
           </select>
         </div>
         {errors.currency && <span className={styles.error}>{errors.currency.message}</span>}
@@ -97,7 +91,7 @@ export const CreateVacancyForm: React.FC<VacancyFormProps> = ({
       <div className={styles.row}>
         <div className={styles.field}>
           <label>Формат работы</label>
-          <select {...register('workFormat')} className={styles.select} defaultValue="">
+          <select {...register('workFormat')} className={styles.select}>
             <option value="" disabled hidden>
               Выберите формат
             </option>
@@ -110,7 +104,7 @@ export const CreateVacancyForm: React.FC<VacancyFormProps> = ({
 
         <div className={styles.field}>
           <label>Тип занятости</label>
-          <select {...register('employmentType')} className={styles.select} defaultValue="">
+          <select {...register('employmentType')} className={styles.select}>
             <option value="" disabled hidden>
               Выберите тип занятости
             </option>
@@ -129,7 +123,7 @@ export const CreateVacancyForm: React.FC<VacancyFormProps> = ({
       <div className={styles.row}>
         <div className={styles.field}>
           <label>Опыт работы</label>
-          <select {...register('experience')} className={styles.select} defaultValue="">
+          <select {...register('experience')} className={styles.select}>
             <option value="" disabled hidden>
               Выберите опыт
             </option>
@@ -143,16 +137,13 @@ export const CreateVacancyForm: React.FC<VacancyFormProps> = ({
 
         <div className={styles.field}>
           <label>График работы</label>
-          <select {...register('schedule')} className={styles.select} defaultValue="">
+          <select {...register('schedule')} className={styles.select}>
             <option value="" disabled hidden>
               Выберите график
             </option>
-            <option value="FULL_TIME">Полный день</option>
-            <option value="SHIFT">Сменный график</option>
+            <option value="FULL_DAY">Полный день</option>
+            <option value="REMOTE">Удалённо</option>
             <option value="FLEXIBLE">Гибкий график</option>
-            <option value="PART_TIME">Частичная занятость</option>
-            <option value="5/2">5/2</option>
-            <option value="2/2">2/2</option>
           </select>
           {errors.schedule && <span className={styles.error}>{errors.schedule.message}</span>}
         </div>

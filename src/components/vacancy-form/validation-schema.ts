@@ -41,10 +41,7 @@ export const createVacancySchema = yup.object({
 
   currency: yup
     .string()
-    .oneOf(
-      ['RUB', 'BYN', 'BYR', 'KZT', 'UZS', 'AZN', 'EUR', 'USD', 'GEL', 'KGS'],
-      'Выберите валюту',
-    )
+    .oneOf(['RUB', 'EUR', 'USD'], 'Выберите валюту')
     .required('Выберите валюту'),
 
   skills: yup.string().optional(),
@@ -57,7 +54,10 @@ export const createVacancySchema = yup.object({
     .string()
     .oneOf(['NO_EXPERIENCE', '1_3_YEARS', '3_6_YEARS', '6_PLUS_YEARS'])
     .required('Выберите опыт'),
-  schedule: yup.string().optional(),
+  schedule: yup
+    .string()
+    .oneOf(['FULL_DAY', 'REMOTE', 'FLEXIBLE', 'SHIFT', 'FLY_IN_FLY_OUT'])
+    .optional(),
   category: yup.string().optional(),
 });
 

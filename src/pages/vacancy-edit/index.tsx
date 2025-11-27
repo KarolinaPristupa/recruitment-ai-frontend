@@ -5,6 +5,28 @@ import { EditVacancyForm } from '@/components/vacancy-form/edit-vacancy';
 import { useIdVacancy } from '@/hooks/use-id-vacancy';
 import api from '@/api/instance';
 import styles from './index.module.scss';
+import { Vacancy } from '@/types/vacancy';
+import { FormVacancy } from '@/types/form-vacancy';
+
+const normalize = (value: any) => (value === '' ? undefined : value);
+
+const vacancyToForm = (v: Vacancy): FormVacancy => ({
+  title: v.title,
+  description: v.description,
+  requirements: v.requirements,
+  category: v.category,
+
+  salaryMin: v.salaryMin ? String(v.salaryMin) : '',
+  salaryMax: v.salaryMax ? String(v.salaryMax) : '',
+
+  status: v.status,
+  currency: v.currency as FormVacancy['currency'],
+  skills: v.skills,
+  workFormat: normalize(v.workFormat),
+  employmentType: normalize(v.employmentType),
+  experience: normalize(v.experience),
+  schedule: normalize(v.schedule),
+});
 
 const VacancyEdit: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -65,12 +87,7 @@ const VacancyEdit: React.FC = () => {
         </motion.h1>
 
         <EditVacancyForm
-          vacancy={{
-            ...vacancy,
-            status: vacancy.status as 'ACTIVE' | 'DRAFT',
-            salaryMin: vacancy.salaryMin ? String(vacancy.salaryMin) : '',
-            salaryMax: vacancy.salaryMax ? String(vacancy.salaryMax) : '',
-          }}
+          vacancy={vacancyToForm(vacancy)}
           isSubmitting={isSubmitting}
           onSubmit={handleSubmit}
           onCancel={() => navigate(-1)}
