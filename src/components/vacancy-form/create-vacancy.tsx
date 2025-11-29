@@ -128,8 +128,8 @@ export const CreateVacancyForm: React.FC<VacancyFormProps> = ({
               Выберите опыт
             </option>
             <option value="NO_EXPERIENCE">Нет опыта</option>
-            <option value="1_3_YEARS">1-3 года</option>
-            <option value="3_6_YEARS">3-6 лет</option>
+            <option value="BETWEEN_1_AND_3">1-3 года</option>
+            <option value="BETWEEN_3_AND_6">3-6 лет</option>
             <option value="6_PLUS_YEARS">Более 6 лет</option>
           </select>
           {errors.experience && <span className={styles.error}>{errors.experience.message}</span>}

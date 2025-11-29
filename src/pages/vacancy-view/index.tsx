@@ -4,14 +4,26 @@ import { VacancyDetails } from '@components/vacancy-details';
 import { VacancyActions } from '@components/vacancy-actions';
 import styles from './index.module.scss';
 import { useIdVacancy } from '@/hooks/use-id-vacancy';
+import { useToastStore } from '@/store/toast-store';
 
 const VacancyView: React.FC = () => {
-  const { vacancy, loading, error, deleteVacancy } = useIdVacancy();
+  const { vacancy, loading, error: loadError, deleteVacancy } = useIdVacancy();
+  const { success, error: toastError } = useToastStore();
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = async () => {
+    if (!window.confirm('Удалить вакансию навсегда?')) return;
+
     setIsDeleting(true);
-    await deleteVacancy();
+
+    try {
+      await deleteVacancy();
+      success('Вакансия удалена');
+    } catch (e) {
+      toastError('Не удалось удалить вакансию');
+    } finally {
+      setIsDeleting(false);
+    }
   };
 
   if (loading) {
@@ -26,7 +38,7 @@ const VacancyView: React.FC = () => {
     );
   }
 
-  if (error || !vacancy) {
+  if (loadError || !vacancy) {
     return <div className={styles.error}>Вакансия не найдена</div>;
   }
 

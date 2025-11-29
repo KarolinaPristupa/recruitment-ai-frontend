@@ -52,7 +52,7 @@ export const createVacancySchema = yup.object({
     .required('Выберите тип занятости'),
   experience: yup
     .string()
-    .oneOf(['NO_EXPERIENCE', '1_3_YEARS', '3_6_YEARS', '6_PLUS_YEARS'])
+    .oneOf(['NO_EXPERIENCE', 'BETWEEN_1_AND_3', 'BETWEEN_3_AND_6', '6_PLUS_YEARS'])
     .required('Выберите опыт'),
   schedule: yup
     .string()

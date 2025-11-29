@@ -5,19 +5,30 @@ import { useVacancies } from '@/hooks/use-vacancy';
 import { usePublishVacancy } from '@/hooks/use-publish-vacancy';
 import styles from './index.module.scss';
 import VacanciesGrid from '@components/vacancies-grid';
+import { useToastStore } from '@/store/toast-store';
 
 const Vacancies: React.FC = () => {
-  const { vacancies, loading, error, refetch, deleteVacancy } = useVacancies();
+  const { vacancies, loading, error: loadError, refetch, deleteVacancy } = useVacancies();
   const { publish, loadingId } = usePublishVacancy();
+
+  const { success, error: toastError } = useToastStore();
 
   const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const handleDelete = async (id: number) => {
     if (!window.confirm('Удалить вакансию навсегда?')) return;
+
     setDeletingId(id);
-    await deleteVacancy(id);
-    setDeletingId(null);
-    await refetch();
+
+    try {
+      await deleteVacancy(id);
+      success('Вакансия удалена');
+      await refetch();
+    } catch {
+      toastError('Не удалось удалить вакансию');
+    } finally {
+      setDeletingId(null);
+    }
   };
 
   useEffect(() => {
@@ -36,7 +47,7 @@ const Vacancies: React.FC = () => {
     );
   }
 
-  if (error) {
+  if (loadError) {
     return <p className={styles.error}>Ошибка загрузки вакансий</p>;
   }
 
