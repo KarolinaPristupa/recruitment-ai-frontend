@@ -6,6 +6,7 @@ import Vacancies from '@pages/vacancies';
 import CreateVacancy from '@pages/create-vacancy';
 import VacancyView from '@pages/vacancy-view';
 import VacancyEdit from '@pages/vacancy-edit';
+import Candidates from '@pages/candidates';
 
 const AppRouter = () => {
   return (
@@ -17,6 +18,8 @@ const AppRouter = () => {
       <Route path="/hr/vacancies/create" element={<CreateVacancy />} />
       <Route path="/hr/vacancies/:id" element={<VacancyView />} />
       <Route path="/hr/vacancies/:id/edit" element={<VacancyEdit />} />
+
+      <Route path="/hr/candidates" element={<Candidates />} />
     </Routes>
   );
 };
