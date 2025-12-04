@@ -39,7 +39,7 @@ const VacancyActive: React.FC<Props> = ({ vacancy }) => {
 
     setFetching(true);
     try {
-      const res = await api.get(`/api/external-responses/${vacancy.id}`);
+      const res = await api.post(`/api/external-responses/fetch/${vacancy.id}`);
       setResponses(res.data || []);
       setLastFetched(Date.now());
       success(`Получено откликов: ${res.data?.length || 0}`);

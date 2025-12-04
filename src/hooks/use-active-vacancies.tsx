@@ -29,7 +29,7 @@ export const useActiveVacancies = () => {
   }, [toastError]);
 
   useEffect(() => {
-    fetchVacancies(); // запускаем загрузку при монтировании
+    fetchVacancies();
   }, [fetchVacancies]);
 
   return {
