@@ -19,7 +19,7 @@ const StageIcon = ({ type }: { type: string }) => {
         <rect width="64" height="64" rx="16" fill="#1e1e2e" />
         <circle cx="32" cy="20" r="9" stroke="#f472b6" strokeWidth="3" />
         <path
-          d="M18 46C18 36 24 32 32 32 32C40 32 46 36 46 46"
+          d="M18 46 C 18 36, 24 32, 32 32 S 46 36, 46 46"
           stroke="#f472b6"
           strokeWidth="3"
           strokeLinecap="round"
@@ -43,6 +43,7 @@ const StageIcon = ({ type }: { type: string }) => {
           d="M24 18V12C24 10 26 8 30 8H34C38 8 40 10 40 12V18"
           stroke="#ffd93d"
           strokeWidth="3"
+          strokeLinecap="round"
         />
         <circle cx="32" cy="30" r="5" fill="#ffd93d" opacity="0.3" />
       </svg>

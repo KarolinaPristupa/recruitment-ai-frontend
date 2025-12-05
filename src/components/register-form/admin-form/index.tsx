@@ -1,23 +1,30 @@
 'use client';
 
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import { adminRegisterSchema } from './validation-schema';
 import { AdminRegisterFormData } from '@/types/admin-register-form-data';
-import { registerAdmin } from '@/api/registerAdmin';
-
+import { registerEnterpriseWithAdmin } from '@/api/register-enterprise-with-admin';
+import { useRegistrationStore } from '@/store/registration-store';
+import { useToastStore } from '@/store/toast-store';
 import styles from '../index.module.scss';
 
-const AdminRegisterForm: React.FC<{ enterpriseId: number }> = ({ enterpriseId }) => {
+const resolver = yupResolver(adminRegisterSchema) as any;
+
+const AdminRegisterForm: React.FC = () => {
   const navigate = useNavigate();
+  const { success, error } = useToastStore();
+  const { data: companyData, reset } = useRegistrationStore();
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isValid },
   } = useForm<AdminRegisterFormData>({
-    resolver: yupResolver(adminRegisterSchema) as any,
+    resolver,
+    mode: 'onChange',
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -28,16 +35,36 @@ const AdminRegisterForm: React.FC<{ enterpriseId: number }> = ({ enterpriseId })
     },
   });
 
-  const onSubmit = async (data: AdminRegisterFormData) => {
-    await registerAdmin({
-      ...data,
-      enterpriseId,
-    });
-    setTimeout(() => {
-      navigate('/login');
-    }, 800);
+  const onSubmit: SubmitHandler<AdminRegisterFormData> = async (adminData) => {
+    if (!companyData?.name) {
+      error('Данные компании не найдены. Начните заново.');
+      return;
+    }
 
-    alert('Администратор зарегистрирован!');
+    const payload = {
+      name: companyData.name,
+      address: companyData.address,
+      contactEmail: companyData.contactEmail,
+      contactPhone: companyData.contactPhone,
+
+      firstName: adminData.firstName,
+      lastName: adminData.lastName,
+      email: adminData.email,
+      phone: adminData.phone,
+      password: adminData.password,
+    };
+
+    try {
+      const { token } = await registerEnterpriseWithAdmin(payload);
+
+      success('Компания и администратор успешно созданы!');
+      localStorage.setItem('token', token);
+      reset();
+
+      setTimeout(() => navigate('/enterprise/account'), 1500);
+    } catch (err: any) {
+      error(err.message);
+    }
   };
 
   return (
@@ -105,8 +132,8 @@ const AdminRegisterForm: React.FC<{ enterpriseId: number }> = ({ enterpriseId })
           )}
         </div>
 
-        <button type="submit" disabled={isSubmitting} className={styles.submit}>
-          Создать администратора
+        <button type="submit" disabled={isSubmitting || !isValid} className={styles.submit}>
+          {isSubmitting ? 'Создаём...' : 'Создать администратора'}
         </button>
       </form>
     </div>

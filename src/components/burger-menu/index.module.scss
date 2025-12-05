@@ -1,5 +1,9 @@
 @use '@/index.scss' as *;
 
+:root {
+  --header-height: 80px;
+}
+
 .wrapper {
   position: relative;
 }
@@ -33,55 +37,58 @@
   }
 }
 
-:root {
-  --header-height: 80px;
+.mobileLink {
+  display: block;
+  width: 100%;
+  padding: 1.2rem 2rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: $font-color-light;
+  background: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &:hover {
+    background: rgba(167, 139, 250, 0.15);
+    color: $link-color;
+  }
+
+  &.active {
+    background: rgba(167, 139, 250, 0.25);
+    color: $link-color;
+    text-shadow: 0 0 10px $link-color;
+  }
 }
 
 .dropdown {
   position: fixed;
-  top: var(--header-height);
+  top: 80px;
   left: 0;
   right: 0;
-  width: 100%;
-  height: auto;
-
   background: rgba(15, 15, 25, 0.98);
-  backdrop-filter: blur(9px);
-  padding: 0.25rem 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  z-index: 9999;
-  animation: slideDown 0.22s ease;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  z-index: 999;
+  animation: slideDown 0.25s ease-out;
 }
 
-.dropdown button {
-  width: 100%;
-  max-width: 900px;
-  padding: 1rem 1.25rem;
-  font-size: 1.1rem;
-  text-align: center;
-  border: none;
-  background: none;
-  color: $font-color-light;
-  cursor: pointer;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  transition:
-    background 0.18s,
-    text-shadow 0.18s;
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: transparent;
 }
 
-.dropdown button:first-child {
-  border-top: none;
+.menu {
+  position: relative;
+  z-index: 1;
+  padding: 1rem 0;
 }
 
-.dropdown button:focus {
-  background: rgba(255, 255, 255, 0.03);
+.extra {
+  margin-top: 0.5rem;
 }
 
 @keyframes slideDown {

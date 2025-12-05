@@ -25,7 +25,7 @@ export const stages: Stage[] = [
   {
     num: '04',
     text: 'Создание вакансий',
-    icon: 'briefcase',
+    icon: 'vacancy',
     fields: ['Название вакансии', 'Описание', 'Требования', 'Зарплата'],
     className: 'long',
   },

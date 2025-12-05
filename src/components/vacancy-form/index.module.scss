@@ -1,0 +1,244 @@
+@use '@/index.scss' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+label {
+  color: #e0d6ff;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+input,
+textarea {
+  background: rgba(40, 40, 60, 0.4);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 16px;
+  padding: 1rem 1.4rem;
+  color: #fff;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #a78bfa;
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+  }
+
+  &::placeholder {
+    color: #888;
+  }
+}
+
+.error {
+  color: #fca5a5;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  color: #ccc;
+  input {
+    width: 20px;
+    height: 20px;
+    accent-color: #a78bfa;
+  }
+}
+
+.selectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select {
+  width: 100%;
+  padding: 1rem 1.4rem;
+  background: rgba(40, 40, 60, 0.4);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 16px;
+  color: #fff;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  appearance: none;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #a78bfa;
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.4);
+  }
+
+  &:hover {
+    border-color: #a78bfa;
+    background-color: rgba(50, 50, 80, 0.5);
+  }
+
+  option {
+    background: #1e1e2e;
+    color: #e0d6ff;
+    padding: 1rem;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.submitBtn {
+  background: $font-color-light;
+  color: $bg-color-dark;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 18px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.4);
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.cancelBtn {
+  background: rgba(60, 60, 80, 0.5);
+  color: #ccc;
+  padding: 1rem 2.5rem;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    background: rgba(167, 139, 250, 0.2);
+    color: white;
+  }
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+}
+
+@media (max-width: 992px) {
+  .form {
+    gap: 1.5rem;
+  }
+
+  .row {
+    gap: 1rem;
+  }
+
+  input,
+  textarea,
+  .select {
+    font-size: 0.95rem;
+    padding: 0.9rem 1.2rem;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .submitBtn,
+  .cancelBtn {
+    width: 100%;
+    padding: 0.9rem 1.4rem;
+    font-size: 1.05rem;
+  }
+
+  textarea {
+    rows: 4;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    gap: 1.2rem;
+  }
+
+  .field {
+    gap: 0.4rem;
+  }
+
+  label {
+    font-size: 0.95rem;
+  }
+
+  input,
+  textarea,
+  .select {
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+  }
+
+  .radioGroup {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .radio {
+    gap: 0.6rem;
+    input {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .submitBtn,
+  .cancelBtn {
+    padding: 0.85rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 14px;
+  }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+  }
+}

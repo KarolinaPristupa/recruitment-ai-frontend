@@ -10,6 +10,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./",
+    "outDir": "dist",
+    "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
       "@/*": ["src/*"],
@@ -20,7 +22,9 @@
       "@types/*": ["src/types/*"],
       "@assets/*": ["src/assets/*"],
       "@contexts/*": ["src/contexts/*"],
-      "@constants/*": ["src/constants/*"]
+      "@constants/*": ["src/constants/*"],
+      "@utils/*": ["src/utils/*"],
+      "@api/*": ["src/api/*"]
     }
   },
   "include": ["src", "vite.config.ts"],
