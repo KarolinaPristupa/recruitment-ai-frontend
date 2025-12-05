@@ -52,7 +52,7 @@ const VacancyAnalytics: React.FC<Props> = ({ vacancyId }) => {
     setError(null);
 
     try {
-      const data = await getAllAnalytics(vacancyId, 5);
+      const data = await getAllAnalytics(vacancyId, 2);
 
       const delayWithDay = data.responseDelay.map((d, idx) => ({
         ...d,
@@ -84,7 +84,7 @@ const VacancyAnalytics: React.FC<Props> = ({ vacancyId }) => {
 
     try {
       await runResponsesAnalysis(vacancyId);
-      success('Анализ откликов запущен');
+      success('Анализ завершен успешно');
 
       await fetchAnalytics();
     } catch {

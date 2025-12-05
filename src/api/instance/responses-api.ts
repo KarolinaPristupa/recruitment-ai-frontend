@@ -10,6 +10,7 @@ export const useVacancyResponses = (vacancies: { id: number }[]) => {
   const [responsesMap, setResponsesMap] = useState<Record<number, any[]>>({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const vacancyKey = JSON.stringify(vacancies.map((v) => v.id));
 
   useEffect(() => {
     if (!vacancies || vacancies.length === 0) return;
@@ -36,7 +37,7 @@ export const useVacancyResponses = (vacancies: { id: number }[]) => {
     return () => {
       ignore = true;
     };
-  }, [vacancies]);
+  }, [vacancyKey]);
 
   return { responsesMap, loading, error };
 };
