@@ -11,7 +11,7 @@
   padding: 1.5rem 2rem;
   border: 1px solid rgba(120, 120, 180, 0.2);
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
   transition: all 0.4s ease;
 
@@ -23,7 +23,7 @@
 
 .infoWrapper {
   display: flex;
-  align-items: center;
+  align-items: start !important;
   justify-content: space-between;
   flex: 1;
   gap: 1rem;

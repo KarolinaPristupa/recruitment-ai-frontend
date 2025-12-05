@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { VacancyResponseDTO } from '@/hooks/use-active-vacancies';
 import styles from './index.module.scss';
+import { formatDate } from '@/utils/formatters';
 
 interface Props {
   vacancy: VacancyResponseDTO;
@@ -21,7 +22,7 @@ const VacancyItem: React.FC<Props> = ({ vacancy, children }) => {
         <div className={styles.infoWrapper}>
           <div className={styles.info}>
             <h3 className={styles.title}>{vacancy.title}</h3>
-            <span className={styles.date}>Опубликовано {vacancy.publishedAt}</span>
+            <span className={styles.date}>Опубликовано {formatDate(vacancy.publishedAt)}</span>
           </div>
 
           <button onClick={handleToggle} className={styles.responsesBtn}>

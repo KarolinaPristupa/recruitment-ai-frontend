@@ -14,10 +14,10 @@ export const useVacancyResponses = (vacancies: { id: number }[]) => {
   useEffect(() => {
     if (!vacancies || vacancies.length === 0) return;
 
+    let ignore = false;
+
     const fetchAll = async () => {
       setLoading(true);
-      setError(false);
-
       try {
         const entries = await Promise.all(
           vacancies.map(async (v) => {
@@ -25,16 +25,17 @@ export const useVacancyResponses = (vacancies: { id: number }[]) => {
             return [v.id, responses] as [number, any[]];
           }),
         );
-
-        setResponsesMap(Object.fromEntries(entries));
-      } catch (err) {
-        setError(true);
+        if (!ignore) setResponsesMap(Object.fromEntries(entries));
       } finally {
-        setLoading(false);
+        if (!ignore) setLoading(false);
       }
     };
 
     fetchAll();
+
+    return () => {
+      ignore = true;
+    };
   }, [vacancies]);
 
   return { responsesMap, loading, error };

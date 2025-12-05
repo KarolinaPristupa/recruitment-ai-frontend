@@ -20,7 +20,9 @@ import {
   TopResumeDTO,
 } from '@/types/analytics';
 import styles from './index.module.scss';
-import { getAllAnalytics } from '@/api/instance/analytics-api';
+
+import { getAllAnalytics, runResponsesAnalysis } from '@/api/instance/analytics-api';
+import { useToastStore } from '@/store/toast-store';
 
 interface Props {
   vacancyId?: number;
@@ -31,17 +33,21 @@ const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#a78bfa', '#f87171'];
 const VacancyAnalytics: React.FC<Props> = ({ vacancyId }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
   const [responseDelay, setResponseDelay] = useState<ResponseDelayDTO[]>([]);
   const [topSkills, setTopSkills] = useState<SkillCountDTO[]>([]);
   const [skillGap, setSkillGap] = useState<SkillGapDTO[]>([]);
   const [stats, setStats] = useState<VacancyStatsDTO | null>(null);
   const [topResumes, setTopResumes] = useState<TopResumeDTO[]>([]);
 
+  const { success, error: showError } = useToastStore();
+
   const getResumeLink = (fileUrl: string | null) =>
     fileUrl ? `http://localhost:8080${fileUrl}` : null;
 
   const fetchAnalytics = async () => {
     if (!vacancyId) return;
+
     setLoading(true);
     setError(null);
 
@@ -60,6 +66,7 @@ const VacancyAnalytics: React.FC<Props> = ({ vacancyId }) => {
       setTopResumes(data.topResumes);
     } catch {
       setError('Не удалось загрузить аналитику');
+      showError('Ошибка загрузки аналитики');
     } finally {
       setLoading(false);
     }
@@ -71,10 +78,17 @@ const VacancyAnalytics: React.FC<Props> = ({ vacancyId }) => {
 
   const handleAnalyze = async () => {
     if (!vacancyId) return;
+
     setLoading(true);
+    setError(null);
+
     try {
+      await runResponsesAnalysis(vacancyId);
+      success('Анализ откликов запущен');
+
       await fetchAnalytics();
     } catch {
+      showError('Ошибка запуска анализа');
       setError('Ошибка при запуске анализа откликов');
     } finally {
       setLoading(false);
@@ -145,6 +159,7 @@ const VacancyAnalytics: React.FC<Props> = ({ vacancyId }) => {
             </ResponsiveContainer>
           )}
         </div>
+
         <div className={styles.chart}>
           <h5>Разрыв навыков</h5>
           {skillGap.length === 0 ? (
