@@ -13,13 +13,20 @@ export type SkillGapDTO = {
   count: number;
 };
 
-export type VacancyStatsDTO = {
+export interface VacancyStatsDTO {
   avgScore: number;
   avgMatch: number;
-};
 
-export type TopResumeDTO = {
-  responseId: number;
+  totalResponses?: number;
+  avgResponseTime?: number;
+  candidateCount?: number;
+}
+
+export interface TopResumeDTO {
+  id: number;
+  name: string;
+  matchCount: number;
+  score?: number;
   applicantName: string;
-  score: number;
-};
+  fileUrl?: string | null;
+}

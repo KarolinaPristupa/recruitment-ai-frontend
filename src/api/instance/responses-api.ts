@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import api from '@/api/instance';
+import api from '@/api/instance/index';
 
 export const fetchResponsesForVacancy = async (vacancyId: number) => {
   const res = await api.post(`/api/external-responses/fetch/${vacancyId}`);
