@@ -68,8 +68,8 @@
   padding: 2.2rem;
   border: 1px solid rgba(167, 139, 250, 0.3);
   box-shadow:
-          0 15px 40px rgba(0, 0, 0, 0.5),
-          inset 0 4px 12px rgba(0, 0, 0, 0.3);
+    0 15px 40px rgba(0, 0, 0, 0.5),
+    inset 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
   display: flex;
   flex-direction: column;
@@ -78,8 +78,8 @@
   &:hover {
     border-color: rgba(167, 139, 250, 0.6);
     box-shadow:
-            0 25px 60px rgba(0, 0, 0, 0.6),
-            0 0 30px rgba(167, 139, 250, 0.2);
+      0 25px 60px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(167, 139, 250, 0.2);
     transform: translateY(-8px);
   }
 }
