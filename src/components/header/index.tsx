@@ -10,6 +10,7 @@ import styles from './index.module.scss';
 import { authStorage } from '@/utils/auth-storage';
 import { BellIcon } from '@constants/bell-icon';
 import { LogoutIcon } from '@constants/logout-icon';
+import { UserIcon } from '@/constants/UserIcon';
 
 const Header: React.FC = () => {
   const location = useLocation();
@@ -31,7 +32,7 @@ const Header: React.FC = () => {
     { to: '/hr/vacancies', label: 'Вакансии' },
     { to: '/hr/candidates', label: 'Кандидаты' },
     { to: '/hr/analytics', label: 'Аналитика' },
-    { to: '/hr/profile', label: 'Профиль' },
+    { to: '/hr/account', label: 'Профиль' },
   ];
 
   const centerNav = isHomePage ? anchorNav : userRole === 'HR' ? hrNav : [];
@@ -86,6 +87,15 @@ const Header: React.FC = () => {
               <BellIcon />
               <span className={styles.badge}>3</span>
             </button>
+            {isHomePage && (
+              <button
+                onClick={() => navigate(userRole === 'HR' ? '/hr/profile' : '/profile')}
+                className={styles.iconButton}
+                aria-label="Личный кабинет"
+              >
+                <UserIcon />
+              </button>
+            )}
             <button onClick={handleLogout} className={styles.iconButton} aria-label="Выйти">
               <LogoutIcon />
             </button>

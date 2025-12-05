@@ -1,0 +1,83 @@
+@use '@/index.scss' as *;
+
+.form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  color: #e0e0ff;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.input {
+  padding: 0.9rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+  }
+
+  &.error {
+    border-color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+  }
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 0.9rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+
+  &.save {
+    background: #86efac;
+    color: #000;
+    border: none;
+
+    &:hover {
+      background: #75de98;
+      transform: translateY(-2px);
+    }
+  }
+
+  &.cancel {
+    background: transparent;
+    color: #ccc;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #a78bfa;
+    }
+  }
+}
