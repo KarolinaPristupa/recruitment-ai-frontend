@@ -39,7 +39,7 @@ const Header: React.FC = () => {
     { to: '/enterprise/vacancies', label: 'Вакансии' },
     { to: '/enterprise/employees', label: 'Сотрудники' },
     { to: '/enterprise/analytics', label: 'Аналитика' },
-    { to: '/enterprise/actions', label: 'Действия' },
+    { to: '/enterprise/account', label: 'Профиль' },
   ];
 
   const centerNav = isHomePage

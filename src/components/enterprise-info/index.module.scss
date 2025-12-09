@@ -97,6 +97,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  margin-bottom: -3rem!important;
 
   &:hover {
     background: rgba(167, 139, 250, 0.4);

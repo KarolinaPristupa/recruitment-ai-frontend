@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import enterpriseRegisterSchema from './validation-schema';
 import styles from '../index.module.scss';
-import { EnterpriseRegisterFormData } from '@/types/enterprise-register-form-data';
+import { Enterprise } from '@/types/enterprise';
 import { Link } from 'react-router-dom';
 import { useRegistrationStore } from '@/store/registration-store';
 import { useToastStore } from '@/store/toast-store';
@@ -20,7 +20,7 @@ const EnterpriseRegisterForm: React.FC<Props> = ({ onNext }) => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<EnterpriseRegisterFormData>({
+  } = useForm<Enterprise>({
     resolver: yupResolver(enterpriseRegisterSchema) as any,
     defaultValues: {
       name: '',

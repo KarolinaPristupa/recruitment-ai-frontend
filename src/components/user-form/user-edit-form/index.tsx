@@ -2,10 +2,10 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { HrAccountData } from '@/types/hr-account-data';
-import { UserEditSchema } from '@components/user-form/validation-schema';
+import { UserEditSchema } from '@components/user-form/user-edit-form/validation-schema';
 import { UserEditFormData } from '@/types/user-edit-form-data';
 
-import styles from './index.module.scss';
+import styles from '../index.module.scss';
 
 interface UserEditProps {
   user: HrAccountData;

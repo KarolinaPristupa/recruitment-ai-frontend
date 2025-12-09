@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import UserInfo from '@components/user-info';
-import UserEdit from '@components/user-form/edit-form';
+import UserEdit from '@components/user-form/user-edit-form';
 import EnterpriseInfo from '@components/enterprise-info';
 import { HrAccountData } from '@/types/hr-account-data';
 import { getHrAccount, updateHrAccount } from '@/api/instance/hr-account-api';
 import { useToastStore } from '@/store/toast-store';
 import styles from './index.module.scss';
 import { motion } from 'framer-motion';
+import EntEditForm from '@components/user-form/ent-edit-form';
 
 const HrAccount: React.FC = () => {
   const [user, setUser] = useState<HrAccountData | null>(null);
@@ -77,13 +78,15 @@ const HrAccount: React.FC = () => {
           )}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className={styles.card}
-        >
-          <EnterpriseInfo enterprise={user} />
+        <motion.div className={styles.card}>
+          <EnterpriseInfo
+            enterprise={{
+              name: user.enterpriseName,
+              address: user.enterpriseAddress,
+              contactEmail: user.enterpriseContactEmail,
+              contactPhone: user.enterpriseContactPhone,
+            }}
+          />
         </motion.div>
       </div>
     </div>

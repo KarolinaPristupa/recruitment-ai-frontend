@@ -9,6 +9,7 @@ import VacancyEdit from '@pages/vacancy-edit';
 import Candidates from '@pages/candidates';
 import Analytics from '@pages/analytics';
 import HrAccount from '@pages/hr-account';
+import EntAdminAccount from '@pages/ent-admin-account';
 
 const AppRouter = () => {
   return (
@@ -22,10 +23,10 @@ const AppRouter = () => {
       <Route path="/hr/vacancies/:id/edit" element={<VacancyEdit />} />
 
       <Route path="/hr/candidates" element={<Candidates />} />
-
       <Route path="/hr/analytics" element={<Analytics />} />
-
       <Route path="/hr/account" element={<HrAccount />} />
+
+      <Route path="/enterprise/account" element={<EntAdminAccount />} />
     </Routes>
   );
 };

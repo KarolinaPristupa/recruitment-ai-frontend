@@ -1,14 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HrAccountData } from '@/types/hr-account-data';
 import styles from './index.module.scss';
+import { useUserRole } from '@/hooks/use-user-role';
+import { Enterprise } from '@/types/enterprise';
 
 interface EnterpriseInfoProps {
-  enterprise: HrAccountData;
+  enterprise: Enterprise;
+  onEdit?: () => void;
 }
 
-const EnterpriseInfo: React.FC<EnterpriseInfoProps> = ({ enterprise }) => {
-  if (!enterprise.enterpriseId) return null;
+const EnterpriseInfo: React.FC<EnterpriseInfoProps> = ({ enterprise, onEdit }) => {
+  if (!enterprise) return null;
+  console.log('Enterprise info', enterprise);
+  const isAdmin = useUserRole() === 'ENT_ADMIN';
 
   const infoItems = [
     {
@@ -21,9 +25,8 @@ const EnterpriseInfo: React.FC<EnterpriseInfoProps> = ({ enterprise }) => {
           <rect x="18" y="30" width="20" height="3" rx="1" fill="#a78bfa" opacity="0.4" />
         </svg>
       ),
-      value: enterprise.enterpriseName || '—',
+      value: enterprise.name || '—',
     },
-
     {
       icon: (
         <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,9 +36,8 @@ const EnterpriseInfo: React.FC<EnterpriseInfoProps> = ({ enterprise }) => {
           <path d="M28 33 V42 M20 42 H36" stroke="#60a5fa" strokeWidth="3" strokeLinecap="round" />
         </svg>
       ),
-      value: enterprise.enterpriseAddress || '—',
+      value: enterprise.address || '—',
     },
-
     {
       icon: (
         <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +47,7 @@ const EnterpriseInfo: React.FC<EnterpriseInfoProps> = ({ enterprise }) => {
           <path d="M18 25 L28 32 L38 25" stroke="#f472b6" strokeWidth="2.5" opacity="0.6" />
         </svg>
       ),
-      value: enterprise.enterpriseContactEmail || '—',
+      value: enterprise.contactEmail || '—',
     },
     {
       icon: (
@@ -61,7 +63,7 @@ const EnterpriseInfo: React.FC<EnterpriseInfoProps> = ({ enterprise }) => {
           <rect x="20" y="32" width="12" height="2" rx="1" fill="#86efac" opacity="0.7" />
         </svg>
       ),
-      value: enterprise.enterpriseContactPhone || '—',
+      value: enterprise.contactPhone || '—',
     },
   ];
 
@@ -95,6 +97,12 @@ const EnterpriseInfo: React.FC<EnterpriseInfoProps> = ({ enterprise }) => {
           </motion.div>
         ))}
       </div>
+
+      {isAdmin && onEdit && (
+        <button className={styles.editButton} onClick={onEdit}>
+          Редактировать
+        </button>
+      )}
 
       <div className={styles.spacerButton} />
     </div>
