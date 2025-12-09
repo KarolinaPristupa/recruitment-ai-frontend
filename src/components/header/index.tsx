@@ -35,7 +35,20 @@ const Header: React.FC = () => {
     { to: '/hr/account', label: 'Профиль' },
   ];
 
-  const centerNav = isHomePage ? anchorNav : userRole === 'HR' ? hrNav : [];
+  const entNav = [
+    { to: '/enterprise/vacancies', label: 'Вакансии' },
+    { to: '/enterprise/employees', label: 'Сотрудники' },
+    { to: '/enterprise/analytics', label: 'Аналитика' },
+    { to: '/enterprise/actions', label: 'Действия' },
+  ];
+
+  const centerNav = isHomePage
+    ? anchorNav
+    : userRole === 'HR'
+      ? hrNav
+      : userRole === 'ENT_ADMIN'
+        ? entNav
+        : [];
 
   const handleLogout = () => {
     authStorage.clearAuth();
@@ -81,7 +94,7 @@ const Header: React.FC = () => {
       )}
 
       <div className={styles.rightSection}>
-        {userRole === 'HR' ? (
+        {userRole === 'HR' || userRole === 'ENT_ADMIN' ? (
           <div className={styles.userActions}>
             <button className={styles.iconButton} aria-label="Уведомления">
               <BellIcon />
@@ -89,7 +102,15 @@ const Header: React.FC = () => {
             </button>
             {isHomePage && (
               <button
-                onClick={() => navigate(userRole === 'HR' ? '/hr/profile' : '/profile')}
+                onClick={() =>
+                  navigate(
+                    userRole === 'HR'
+                      ? '/hr/account'
+                      : userRole === 'ENT_ADMIN'
+                        ? '/enterprise/account'
+                        : '/account',
+                  )
+                }
                 className={styles.iconButton}
                 aria-label="Личный кабинет"
               >

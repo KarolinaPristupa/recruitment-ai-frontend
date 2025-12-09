@@ -22,7 +22,7 @@ const LogIn: React.FC = () => {
       success('Добро пожаловать!');
 
       setTimeout(() => {
-        if (role === 'HR') navigate('/admin/HR');
+        if (role === 'HR') navigate('/hr/account');
         else if (role === 'ENT_ADMIN') navigate('/enterprise/account');
         else navigate('/account');
       }, 800);
