@@ -99,9 +99,18 @@ const EnterpriseInfo: React.FC<EnterpriseInfoProps> = ({ enterprise, onEdit }) =
       </div>
 
       {isAdmin && onEdit && (
-        <button className={styles.editButton} onClick={onEdit}>
-          Редактировать
-        </button>
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          whileHover={{ scale: 1.05, y: -4 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={onEdit}
+          className={styles.editButton}
+        >
+          Редактировать предприятие
+        </motion.button>
       )}
 
       <div className={styles.spacerButton} />
