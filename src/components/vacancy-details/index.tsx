@@ -6,6 +6,7 @@ import { EMPLOYMENT_TYPE_LABELS } from '@constants/employmet-type-labels';
 import { WORK_FORMAT_LABELS } from '@constants/work-format-labels';
 import { EXPERIENCE_LABELS } from '@constants/experiance-labels';
 import { SCHEDULE_LABELS } from '@constants/schedule-labels';
+import { VacancyActions } from '@components/vacancy-actions';
 
 interface VacancyDetailsProps {
   vacancy: Vacancy;

@@ -10,6 +10,7 @@ import Candidates from '@pages/candidates';
 import Analytics from '@pages/analytics';
 import HrAccount from '@pages/hr-account';
 import EntAdminAccount from '@pages/ent-admin-account';
+import VacanciesAll from '@pages/vacancies-all';
 
 const AppRouter = () => {
   return (
@@ -27,6 +28,7 @@ const AppRouter = () => {
       <Route path="/hr/account" element={<HrAccount />} />
 
       <Route path="/enterprise/account" element={<EntAdminAccount />} />
+      <Route path="/enterprise/vacancies" element={<VacanciesAll />} />
     </Routes>
   );
 };

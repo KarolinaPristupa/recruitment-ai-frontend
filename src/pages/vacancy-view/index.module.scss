@@ -4,13 +4,19 @@
   padding: 6rem 2rem 10rem;
   background: $bg-gradient;
   min-height: 100vh;
-  display: grid;
   place-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .container {
   width: 100%;
   max-width: 960px;
+}
+
+.vacancyDetails {
+  margin-bottom: 2rem;
 }
 
 .loader {

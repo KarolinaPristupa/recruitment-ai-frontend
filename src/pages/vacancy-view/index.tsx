@@ -5,17 +5,21 @@ import { VacancyActions } from '@components/vacancy-actions';
 import styles from './index.module.scss';
 import { useIdVacancy } from '@/hooks/use-id-vacancy';
 import { useToastStore } from '@/store/toast-store';
+import { useUserRole } from '@/hooks/use-user-role';
+import { usePublishVacancy } from '@/hooks/use-publish-vacancy';
 
 const VacancyView: React.FC = () => {
   const { vacancy, loading, error: loadError, deleteVacancy } = useIdVacancy();
   const { success, error: toastError } = useToastStore();
+  const { publish, loadingId } = usePublishVacancy();
   const [isDeleting, setIsDeleting] = useState(false);
+
+  const isHR = useUserRole() === 'HR';
 
   const handleDelete = async () => {
     if (!window.confirm('Удалить вакансию навсегда?')) return;
 
     setIsDeleting(true);
-
     try {
       await deleteVacancy();
       success('Вакансия удалена');
@@ -49,8 +53,19 @@ const VacancyView: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         className={styles.container}
       >
-        <VacancyDetails vacancy={vacancy} />
-        <VacancyActions vacancyId={vacancy.id} onDelete={handleDelete} isDeleting={isDeleting} />
+        <div className={styles.vacancyDetails}>
+          <VacancyDetails vacancy={vacancy} />
+        </div>
+
+        {isHR && (
+          <VacancyActions
+            vacancyId={vacancy.id}
+            onDelete={handleDelete}
+            onPublish={() => publish(vacancy.id)}
+            isDeleting={isDeleting}
+            isPublishing={loadingId === vacancy.id}
+          />
+        )}
       </motion.div>
     </section>
   );
