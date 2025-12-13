@@ -35,9 +35,29 @@
     box-shadow: 0 0 20px #a78bfa;
   }
 
-  @media (max-width: 1024px) { font-size: 2.8rem; &::after { width: 100px; height: 4px; } }
-  @media (max-width: 768px) { font-size: 2.3rem; margin-bottom: 2.8rem; &::after { width: 100px; height: 4px; } }
-  @media (max-width: 480px) { font-size: 1.9rem; margin-bottom: 2.2rem; &::after { width: 80px; height: 3px; } }
+  @media (max-width: 1024px) {
+    font-size: 2.8rem;
+    &::after {
+      width: 100px;
+      height: 4px;
+    }
+  }
+  @media (max-width: 768px) {
+    font-size: 2.3rem;
+    margin-bottom: 2.8rem;
+    &::after {
+      width: 100px;
+      height: 4px;
+    }
+  }
+  @media (max-width: 480px) {
+    font-size: 1.9rem;
+    margin-bottom: 2.2rem;
+    &::after {
+      width: 80px;
+      height: 3px;
+    }
+  }
 }
 .columns {
   display: flex;
@@ -67,7 +87,6 @@
   }
 }
 
-
 .right {
   flex: 2;
   padding: 1rem;
@@ -75,7 +94,6 @@
   backdrop-filter: blur(10px);
   border-radius: 16px;
 }
-
 
 .createBtn {
   display: flex;
@@ -215,7 +233,7 @@
 .modal {
   width: 100%;
   max-width: 460px;
-  max-height:70%;
+  max-height: 70%;
   background: rgba(30, 30, 46, 0.9);
   border-radius: 20px;
   padding: 2rem;
