@@ -1,9 +1,9 @@
 import * as yup from 'yup';
-import { HrAccountData } from '@/types/hr-account-data';
+import { UserAccountData } from '@types/user-account-data';
 
 export const EntEditSchema: yup.ObjectSchema<
   Pick<
-    HrAccountData,
+    UserAccountData,
     'enterpriseName' | 'enterpriseAddress' | 'enterpriseContactEmail' | 'enterpriseContactPhone'
   >
 > = yup.object({

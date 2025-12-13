@@ -1,7 +1,11 @@
 import * as yup from 'yup';
 import { UserEditFormData } from '@/types/user-edit-form-data';
 
-export const UserEditSchema: yup.ObjectSchema<UserEditFormData> = yup.object({
+interface Context {
+  isAdminEditingOther: boolean;
+}
+
+export const UserEditSchema: yup.ObjectSchema<UserEditFormData, Context> = yup.object({
   firstName: yup.string().required('Имя обязательно'),
   lastName: yup.string().required('Фамилия обязательна'),
   email: yup.string().email('Неверный email').required('Email обязателен'),
@@ -12,10 +16,14 @@ export const UserEditSchema: yup.ObjectSchema<UserEditFormData> = yup.object({
 
   password: yup
     .string()
-    .min(6, 'Минимум 6 символов')
     .nullable()
-    .transform((value) => (value === '' ? null : value)) // пустую строку считаем null
-    .notRequired(),
+    .transform((value) => (value === '' ? null : value))
+    .min(6, 'Минимум 6 символов')
+    .notRequired()
+    .when('$isAdminEditingOther', {
+      is: true,
+      then: (s) => s.strip(),
+    }),
 
   confirmPassword: yup
     .string()

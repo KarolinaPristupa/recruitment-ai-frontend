@@ -81,3 +81,25 @@
     }
   }
 }
+
+.scrollable {
+  max-height: calc(100vh - 240px);
+  overflow-y: auto;
+  padding-right: 0.5rem;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(167, 139, 250, 0.6) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(167, 139, 250, 0.6);
+    border-radius: 4px;
+  }
+}

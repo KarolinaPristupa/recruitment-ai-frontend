@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import UserInfo from '@components/user-info';
 import UserEdit from '@components/user-form/user-edit-form';
 import EnterpriseInfo from '@components/enterprise-info';
-import { HrAccountData } from '@/types/hr-account-data';
+import { UserAccountData } from '@types/user-account-data';
 import { getHrAccount, updateHrAccount } from '@/api/instance/hr-account-api';
 import { useToastStore } from '@/store/toast-store';
 import styles from './index.module.scss';
@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 import EntEditForm from '@components/user-form/ent-edit-form';
 
 const HrAccount: React.FC = () => {
-  const [user, setUser] = useState<HrAccountData | null>(null);
+  const [user, setUser] = useState<UserAccountData | null>(null);
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(true);
   const { addToast } = useToastStore();
@@ -27,7 +27,7 @@ const HrAccount: React.FC = () => {
       });
   }, [addToast]);
 
-  const handleSave = async (data: Partial<HrAccountData> & { password?: string }) => {
+  const handleSave = async (data: Partial<UserAccountData> & { password?: string }) => {
     try {
       const res = await updateHrAccount(data);
       localStorage.setItem('accessToken', res.token);

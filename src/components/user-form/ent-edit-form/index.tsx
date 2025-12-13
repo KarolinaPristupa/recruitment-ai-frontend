@@ -3,12 +3,12 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { EntEditSchema } from './validation-schema';
 import styles from '../index.module.scss';
-import { HrAccountData } from '@/types/hr-account-data';
+import { UserAccountData } from '@/types/user-account-data';
 
 interface EntEditFormProps {
-  enterprise: HrAccountData;
+  enterprise: UserAccountData;
   onCancel: () => void;
-  onSave: (data: HrAccountData) => void;
+  onSave: (data: UserAccountData) => void;
 }
 
 const EntEditForm: React.FC<EntEditFormProps> = ({ enterprise, onCancel, onSave }) => {
@@ -16,12 +16,12 @@ const EntEditForm: React.FC<EntEditFormProps> = ({ enterprise, onCancel, onSave 
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<HrAccountData>({
+  } = useForm<UserAccountData>({
     defaultValues: enterprise,
     resolver: yupResolver(EntEditSchema) as any,
   });
 
-  const submit = (data: HrAccountData) => {
+  const submit = (data: UserAccountData) => {
     onSave(data);
   };
 

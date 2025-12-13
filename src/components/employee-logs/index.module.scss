@@ -1,0 +1,56 @@
+@use '@/index.scss' as *;
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(30, 30, 46, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+  thead {
+    background: rgba(30, 30, 46, 0.8);
+
+    th {
+      padding: 0.8rem 1rem;
+      text-align:center;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #e0e0ff;
+      border-bottom: 1px solid rgba(120, 120, 180, 0.2);
+    }
+  }
+
+  tbody {
+    tr {
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(167, 139, 250, 0.15);
+      }
+
+      td {
+        padding: 0.7rem 1rem;
+        font-size: 0.95rem;
+        color: #c0c0ff;
+        border-bottom: 1px solid rgba(120, 120, 180, 0.1);
+        word-break: break-word;
+      }
+    }
+  }
+
+
+  thead tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+  }
+  thead tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+  }
+  tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+  }
+  tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+  }
+}

@@ -1,6 +1,4 @@
-import { Enterprise } from './enterprise';
-
-export interface HrAccountData {
+export interface UserAccountData {
   firstName: string;
   lastName: string;
   email: string;

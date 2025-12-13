@@ -27,6 +27,7 @@ export interface TopResumeDTO {
   name: string;
   matchCount: number;
   score?: number;
+  ratingR: number;
   applicantName: string;
   fileUrl?: string | null;
 }

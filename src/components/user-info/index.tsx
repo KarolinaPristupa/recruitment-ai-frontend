@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HrAccountData } from '@/types/hr-account-data';
+import { UserAccountData } from '@/types/user-account-data';
 import styles from './index.module.scss';
 
 interface UserInfoProps {
-  user: HrAccountData;
+  user: UserAccountData;
   onEdit: () => void;
 }
 

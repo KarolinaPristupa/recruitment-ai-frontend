@@ -4,13 +4,13 @@ import UserInfo from '@components/user-info';
 import UserEdit from '@components/user-form/user-edit-form';
 import EnterpriseInfo from '@components/enterprise-info';
 import EntEditForm from '@components/user-form/ent-edit-form';
-import { HrAccountData } from '@/types/hr-account-data';
+import { UserAccountData } from '@types/user-account-data';
 import { getHrAccount, updateEnterprise, updateHrAccount } from '@/api/instance/hr-account-api';
 import { useToastStore } from '@/store/toast-store';
 import styles from './index.module.scss';
 
 const EntAdminAccount: React.FC = () => {
-  const [user, setUser] = useState<HrAccountData | null>(null);
+  const [user, setUser] = useState<UserAccountData | null>(null);
   const [editingUser, setEditingUser] = useState(false);
   const [editingEnterprise, setEditingEnterprise] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ const EntAdminAccount: React.FC = () => {
       .finally(() => setLoading(false));
   }, [addToast]);
 
-  const handleSaveUser = async (data: Partial<HrAccountData> & { password?: string }) => {
+  const handleSaveUser = async (data: Partial<UserAccountData> & { password?: string }) => {
     if (!user) return;
 
     try {
@@ -37,10 +37,10 @@ const EntAdminAccount: React.FC = () => {
     }
   };
 
-  const handleSaveEnterprise = async (data: HrAccountData) => {
+  const handleSaveEnterprise = async (data: UserAccountData) => {
     if (!user) return;
 
-    const payload: Partial<HrAccountData> = {
+    const payload: Partial<UserAccountData> = {
       enterpriseName: data.enterpriseName,
       enterpriseAddress: data.enterpriseAddress,
       enterpriseContactEmail: data.enterpriseContactEmail,

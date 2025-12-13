@@ -1,0 +1,13 @@
+.list {
+  overflow-y: auto;
+  max-height: 80vh;
+  padding-right: 0.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  overflow: visible;
+}
+

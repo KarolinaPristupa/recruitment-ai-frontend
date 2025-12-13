@@ -206,7 +206,7 @@ const VacancyAnalytics: React.FC<Props> = ({ vacancyId }) => {
                   >
                     {r.applicantName}
                   </button>
-                  <strong> — {Math.round(r.score)}%</strong> совпадения
+                  <strong> — {Math.round(r.ratingR)}%</strong> совпадения
                 </li>
               ))}
             </ul>
