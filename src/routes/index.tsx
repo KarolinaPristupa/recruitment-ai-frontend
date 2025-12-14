@@ -12,6 +12,7 @@ import HrAccount from '@pages/hr-account';
 import EntAdminAccount from '@pages/ent-admin-account';
 import VacanciesAll from '@pages/vacancies-all';
 import EntEmployees from '@pages/ent-employees';
+import EntEmployeeStatistics from '@pages/ent-employee-statistics';
 
 const AppRouter = () => {
   return (
@@ -31,6 +32,8 @@ const AppRouter = () => {
       <Route path="/enterprise/account" element={<EntAdminAccount />} />
       <Route path="/enterprise/vacancies" element={<VacanciesAll />} />
       <Route path="/enterprise/employees" element={<EntEmployees />} />
+
+      <Route path="/enterprise/analytics" element={<EntEmployeeStatistics />} />
     </Routes>
   );
 };
